@@ -14,7 +14,7 @@
         color:green;
     }
 }*/
-
+@import "./scss/variables.scss";
 .app {
-
+    color: $primary-color;
 }
