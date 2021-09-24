@@ -3,8 +3,9 @@ import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Web personal - Client1</h1>
+    <div className="app">
+      <h1>Web personal - Client <span>David Gerardo</span></h1>
+      <h2>Proyecto</h2>
     </div>
   );
 }
