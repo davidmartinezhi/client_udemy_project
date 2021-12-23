@@ -11,8 +11,9 @@ function App() {
       
         <h1>Sistema de rutas basico</h1>
         <Routes>
-          <Route path="/" exact element={<Home/>} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route exact path="/"  element={<Home/>} />
+          <Route exact path="/contact" element={<Contact/>} />
+          <Route exact path="/user" element={<User/>} />
         </Routes>
       </div>
     </Router>
