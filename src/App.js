@@ -1,15 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
 import "./App.scss";
 
 function App() {
   
   return (
-    <div className="App">
-      <h1>Sistema de rutas basico</h1>
-
-    </div>
+    
+      <div className="App">
+        <h1>Sistema de rutas basico</h1>
+        <Routes>
+          <Route exact path="/" component={Home} />
+        </Routes>
+      </div>
+    
   );
 }
 
