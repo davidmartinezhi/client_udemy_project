@@ -1,21 +1,29 @@
 import React from 'react';
-import { DatePicker } from 'antd';
-import './App.scss';
+import { BrowserRouter, Route, Link} from 'react-router-dom';
 
-
+import "./App.scss";
 
 function App() {
-  const test = (date, dateString) => {
-    console.log(date, dateString);
-  }
+  
   return (
     <div className="App">
-      <h1>Web personal - Client <span>David Gerardo</span></h1>
-      <h2>Proyecto</h2>
-      <DatePicker onChange={test}/>
+      <h1>Sistema de rutas basico</h1>
 
     </div>
   );
+}
+
+//Creo los componentes
+function Home () {
+  return <h2>Estamos en el componente Home</h2>;
+}
+
+function Contact () {
+  return <h2>Componente Contact...</h2>;
+}
+
+function User() {
+  return <h2>Estamos en el componente User</h2>;
 }
 
 export default App;
