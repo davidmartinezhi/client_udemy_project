@@ -14,6 +14,7 @@ function App() {
           <Route exact path="/"  element={<Home/>} />
           <Route exact path="/contact" element={<Contact/>} />
           <Route exact path="/user" element={<User/>} />
+          <Route path="*" element={<Error404/>} />
         </Routes>
       </div>
     </Router>
@@ -37,10 +38,18 @@ function Contact () {
   );
 }
 
-function User() {
+function User () {
   return (
     <div>
       <h2>Estamos en el componente User</h2>
+    </div>
+  );
+}
+
+function Error404 () {
+  return (
+    <div>
+      <h2>Error 404...</h2>
     </div>
   );
 }
