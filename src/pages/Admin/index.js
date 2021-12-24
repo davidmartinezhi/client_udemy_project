@@ -1,0 +1,1 @@
+export { default } from './Admin';  //Index representa a la aplicación/pagina. El render viene de admin.js
