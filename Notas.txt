@@ -2,6 +2,7 @@ Uso react router, para crear el sistema de rutas
 
 Folders:
 Pages, ahí guardo todas nuestras paginas
+    Admin, pagina para los administradores
 
 *Investigar*
 -Poruqe eciste un index.js y un App.js. Para que existen ambas
