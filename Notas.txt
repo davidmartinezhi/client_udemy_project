@@ -1,2 +1,7 @@
 Uso react router, para crear el sistema de rutas
 
+Folders:
+Pages, ahí guardo todas nuestras paginas
+
+*Investigar*
+-Poruqe eciste un index.js y un App.js. Para que existen ambas
