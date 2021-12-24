@@ -1,4 +1,6 @@
 import React from 'react';
+import Admin from './pages/Admin';
+import SignIn from './pages/Admin/SignIn';
 
 import "./App.scss";
 
