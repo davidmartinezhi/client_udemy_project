@@ -4,5 +4,8 @@ Folders:
 Pages, ahí guardo todas nuestras paginas
     Admin, pagina para los administradores
 
+
 *Investigar*
 -Poruqe eciste un index.js y un App.js. Para que existen ambas
+En index ponemos el export de la pagina u componente principal
+Ahí pongo el export por default
