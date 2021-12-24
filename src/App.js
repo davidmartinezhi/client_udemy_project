@@ -7,7 +7,11 @@ import "./App.scss";
 function App() {
   
   return (
-    <h1>Estamos en App.js</h1>
+    <div>
+      <h1>Estamos en App.js</h1>
+      <Admin />
+      <SignIn />
+    </div>
   );
 }
 
