@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Contact(){
     return(
-        <di>
+        <div>
             <h1>Contact</h1>
-        </di>
+        </div>
     );
 }

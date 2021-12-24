@@ -1,8 +1,8 @@
 Uso react router, para crear el sistema de rutas
 
 Folders:
-Pages, ahí guardo todas nuestras paginas
-    Admin, pagina para los administradores
+Pages, ahí guardo todas nuestras paginas y el archivo con las paginas del admin
+    Admin, carpeta con pagina para administradores
 
 
 *Investigar*
