@@ -1,5 +1,5 @@
 // Layout
-import LayoutAdmin from "../layout/layoutAdmin";
+import LayoutAdmin from "../layout/LayoutAdmin";
 
 //Admin Page
 import AdminHome from '../pages/Admin'; //Al ser importación default, no importa el nombre que le ponga
