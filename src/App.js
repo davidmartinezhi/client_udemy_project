@@ -1,10 +1,17 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import routes from './config/routes'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import routes from './config/routes';
+import AdminHome from './pages/Admin';
 import "./App.scss";
 
 function App() {
-  return ();
+  return (
+    <Router>
+      <Routes>
+        <Route path="/admin" exact="true" element={<AdminHome/>}/>
+      </Routes>
+    </Router>
+  );
 }
 
 
