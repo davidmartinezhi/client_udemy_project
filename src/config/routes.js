@@ -13,9 +13,10 @@ const routes = [
         exact: false,   //No es exact, porque queremos que con admin, siempre tenga este layout
         routes:[
             {
+                //Si alguna de estas rutas fueran exact: false. Si se escribe mal el nombre siempre cargaria esa
                 //Dentro de admin, siempre nos va a mandar al componente Home
-                path: "/admin",
-                component: AdminHome,
+                path: "/admin", //Cuando solo es admin
+                component: AdminHome,   //Aparece el home
                 exact: true,    //Tiene que ser especifica la ruta para cargar este layout
             },
             {
@@ -27,3 +28,5 @@ const routes = [
         ]
     }
 ]
+
+export default routes;
