@@ -12,7 +12,12 @@ Layout:
 Config:
     Va a tener todo nuestro sistema de rutas
 
+
 *Investigar*
--Poruqe eciste un index.js y un App.js. Para que existen ambas
+-Poruqe eciste un index.js y un App.js. Para que existen ambas (creo index.js solo es para llamar a app.js)
 En index ponemos el export de la pagina u componente principal
 Ahí pongo el export por default
+
+
+App.js es la raíz de la aplicación
+Cualquier cosa que haga nuestra aplicación, va a pasar por App.js
