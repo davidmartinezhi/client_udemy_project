@@ -4,6 +4,9 @@ Folders:
 Pages, ahí guardo todas nuestras paginas y el archivo con las paginas del admin
     Admin, carpeta con pagina para administradores
 
+Layout:
+    Admin y User
+    Donde van a estar posicionados los distintos componentes de la pagina
 
 *Investigar*
 -Poruqe eciste un index.js y un App.js. Para que existen ambas
