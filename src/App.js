@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/admin" exact="true" element={<AdminHome/>}/>
+        <Route path="/admin" exact={true} element={<AdminHome/>}/>
       </Routes>
     </Router>
   );
