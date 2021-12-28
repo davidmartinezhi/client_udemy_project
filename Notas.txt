@@ -24,3 +24,7 @@ Cualquier cosa que haga nuestra aplicación, va a pasar por App.js
 
 Index.js es lo primero que se renderiza en la pagina web.
 Me hace sentido creer que el index.js es el main y llama a app. Desde app cae como cascada todo lo demas
+
+
+Nota personal:
+    Debo repasar react o meterme a un curso estulo codecademy
