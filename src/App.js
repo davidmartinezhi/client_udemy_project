@@ -25,6 +25,7 @@ function App() {
 function RouteWithSubRoutes (props){
   //Con esta función nos renderisa la routa en la que estemos, en lugar de tener una gran lista de rutas
   //Con que la ruta exista en config, todo esta bien
+  //La función solo pide que nos renderice las rutas de la configuración
   const { route } = props;
 
   return (
