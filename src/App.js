@@ -21,7 +21,10 @@ function App() {
 //Cuando queramos que el nombre sea un Hook, lo creamos con useNombre
 //Cuando queremos una función normal, comienza con minuscula y ya
 
+
 function RouteWithSubRoutes (props){
+  //Con esta función nos renderisa la routa en la que estemos, en lugar de tener una gran lista de rutas
+  //Con que la ruta exista en config, todo esta bien
   const { route } = props;
 
   return (
