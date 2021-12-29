@@ -10,6 +10,8 @@ import AdminSignIn from '../pages/Admin/SignIn';
 import Home from '../pages/Home';
 import Contact from '../pages/Contact';
 
+//Other
+import Error404 from '../pages/Error404';
 
 const routes = [
     //Configuración de rutas admin
@@ -31,6 +33,13 @@ const routes = [
                 path: "/admin/login",
                 component: AdminSignIn,
                 exact: true
+            },
+            //Siempre se pone el error 404 al final de las rutas
+            {
+                //Si no se cumple ninguna ruta, se despliega este componente
+                //No pongo ruta, porque no es posible saber que va a escribir el usuario
+                component: Error404,
+                
             }
         ]
     },

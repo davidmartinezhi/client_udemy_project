@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from 'react-router-dom';
+import { Route , Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 
 import "./LayoutAdmin.scss"; 
@@ -37,6 +37,21 @@ export default function LayoutAdmin( props ) {
 
 function LoadRouters ( {routes} ){
     //Map requiere que el hijo siempre tenga una key
+    //map debe estar envuelto en llaves al no estar directamente en Router
+    return (
+        <Switch>
+            {routes.map((route, index) => (
+            <Route 
+                key={index}
+                path = {route.path}
+                exact = {route.exact}
+                component = {route.component}
+            /> 
+            ))}
+        </Switch>
+    );
+
+
     return routes.map((route, index) => (
             <Route 
                 key={index}
