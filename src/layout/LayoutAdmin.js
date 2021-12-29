@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from 'react-router-dom';
 import { Layout } from 'antd';
 
-import "./LayoutAdmin.scss";
+import "./LayoutAdmin.scss"; 
 
 export default function LayoutAdmin( props ) {
     
