@@ -35,7 +35,7 @@ export default function LayoutAdmin( props ) {
 }
 
 
-function LoadRouters ({routes}){
+function LoadRouters ( {routes} ){
     //Map requiere que el hijo siempre tenga una key
     return routes.map((route, index) => (
             <Route 
