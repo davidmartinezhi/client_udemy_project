@@ -13,7 +13,7 @@ export default function LayoutBasic( props ){
             <h2>Menu...</h2>
             <Layout>
                 <Content>
-                    <LoadRouters routes={routes} />
+                    <LoadRoutes routes={routes} />
                 </Content>
                 <Footer>
                     David Gerardo Martínez
@@ -24,7 +24,7 @@ export default function LayoutBasic( props ){
 }
 
 
-function LoadRouters( {routes} ){
+function LoadRoutes( {routes} ){
     return (
         <Switch>
             {routes.map((route, index) => (

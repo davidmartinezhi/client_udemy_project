@@ -21,7 +21,7 @@ export default function LayoutAdmin( props ) {
 
                 <Content>
                 
-                    <LoadRouters routes = {routes}/>
+                    <LoadRoutes routes = {routes}/>
     
                 </Content>
 
@@ -35,7 +35,7 @@ export default function LayoutAdmin( props ) {
 }
 
 
-function LoadRouters ( {routes} ){
+function LoadRoutes ( {routes} ){
     //Map requiere que el hijo siempre tenga una key
     //map debe estar envuelto en llaves al no estar directamente en Router
     return (
@@ -51,13 +51,4 @@ function LoadRouters ( {routes} ){
         </Switch>
     );
 
-
-    return routes.map((route, index) => (
-            <Route 
-                key={index}
-                path = {route.path}
-                exact = {route.exact}
-                component = {route.component}
-            /> 
-    ));
 }
