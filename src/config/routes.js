@@ -12,6 +12,7 @@ import Contact from '../pages/Contact';
 
 
 const routes = [
+    //Configuración de rutas admin
     {
         //Dentro de admin Este display es para el administrador de la pagina.
         path: "/admin", //Siempre que la ruta tenga una barra admin, va a cargar este layout
@@ -32,6 +33,26 @@ const routes = [
                 exact: true
             }
         ]
+    },
+
+    //Rutas de la pagina para el end-user
+    {
+        path: "/", //Desde la raíz
+        component: LayoutBasic,
+        exact: false, //Pueden existir diferentes raices como la de admin. pero esta será la misma siempre
+        routes: [
+            {
+                path: "/",
+                component: Home,
+                exact: true
+            },
+            {
+                path: "/contact",
+                component: Contact,
+                exact: true
+            }
+        ]
+
     }
 ]
 
