@@ -59,6 +59,10 @@ const routes = [
                 path: "/contact",
                 component: Contact,
                 exact: true
+            },
+            //Error 404
+            {
+                component: Error404
             }
         ]
 
