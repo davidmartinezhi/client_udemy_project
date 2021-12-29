@@ -1,23 +1,27 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Layout } from 'antd';
 
 import "./LayoutAdmin.scss";
-import routes from "../config/routes";
 
 export default function LayoutAdmin( props ) {
+    
     const { routes } = props;
     const { Header, Content, Footer } = Layout;
+    
 
     return(
         <Layout>
             <h2>Menú Sidebar</h2>
+
             <Layout>
-                <Header>Header...</Header>
+                <Header>
+                    Header...
+                </Header>
 
                 <Content>
                 
-                    <LoadRouters routes={routes}/>
+                    <LoadRouters routes = {routes}/>
     
                 </Content>
 
@@ -32,15 +36,13 @@ export default function LayoutAdmin( props ) {
 
 
 function LoadRouters ({routes}){
-    console.log(routes);
+    //Map requiere que el hijo siempre tenga una key
     return routes.map((route, index) => (
-        <Routes>
             <Route 
                 key={index}
                 path = {route.path}
                 exact = {route.exact}
-                element = {<route.component />}
-            />
-        </Routes>
+                component = {route.component}
+            /> 
     ));
 }
