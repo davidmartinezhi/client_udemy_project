@@ -1,6 +1,23 @@
 import React from 'react';
-import '../MenuTop.scss';
+import { Button } from 'antd';
+import { MenuUnfoldOutlined} from '@ant-design/icons';
+import AgusLogo from '../../../assets/img/png/logo-white.png';
+import "./MenuTop.scss";
+
 
 export default function MenuTop(){
-    return 'MenuTop....';
+    return (
+        <div className="menu-top">
+            <div className="menu-top__left">
+                <img 
+                    className="menu-top__left-logo"
+                    src={AgusLogo}
+                    alt="David Gerardo Martínez"
+                />
+                <Button type="link" onClick={() => console.log("Click.")} >
+                    <MenuUnfoldOutlined/>
+                </Button>
+            </div>
+        </div>
+    );
 }
