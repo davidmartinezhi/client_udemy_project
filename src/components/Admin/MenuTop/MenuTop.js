@@ -20,7 +20,7 @@ export default function MenuTop(){
             </div>
 
             <div className="menu-top__right">
-                <Button type="link">
+                <Button type="link" onClick={() => console.log("Desconexion...")}>
                     <PoweroffOutlined/>
                 </Button>
             </div>
