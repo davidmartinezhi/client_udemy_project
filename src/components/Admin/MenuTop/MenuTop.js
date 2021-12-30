@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { MenuUnfoldOutlined} from '@ant-design/icons';
+import { MenuUnfoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import AgusLogo from '../../../assets/img/png/logo-white.png';
 import "./MenuTop.scss";
 
@@ -16,6 +16,12 @@ export default function MenuTop(){
                 />
                 <Button type="link" onClick={() => console.log("Click.")} >
                     <MenuUnfoldOutlined/>
+                </Button>
+            </div>
+
+            <div className="menu-top__right">
+                <Button type="link">
+                    <PoweroffOutlined/>
                 </Button>
             </div>
         </div>
