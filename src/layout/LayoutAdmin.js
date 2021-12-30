@@ -12,20 +12,20 @@ export default function LayoutAdmin( props ) {
 
     return(
         <Layout>
-            <h2>Menú Sidebar</h2>
+            {/* TO DO: Menu Sidebar */}
 
-            <Layout>
-                <Header>
-                    Header...
+            <Layout className="layout-admin">
+                <Header className="layout-admin__header">
+                    {/* TO DO: Menu Top */}
                 </Header>
 
-                <Content>
+                <Content className="layout-admin__content">
                 
                     <LoadRoutes routes = {routes}/>
     
                 </Content>
 
-                <Footer>
+                <Footer className="layout-admin__footer">
                     David Gerardo Martínez
                 </Footer>
             </Layout>
