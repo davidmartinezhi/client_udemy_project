@@ -17,7 +17,7 @@ export default function LayoutAdmin( props ) {
 
             <Layout className="layout-admin">
                 <Header className="layout-admin__header">
-                    {/* TO DO: Menu Top */}
+                    <MenuTop/>
                 </Header>
 
                 <Content className="layout-admin__content">
