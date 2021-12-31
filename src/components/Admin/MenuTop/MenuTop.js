@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button } from 'antd';
-import { MenuUnfoldOutlined, PoweroffOutlined } from '@ant-design/icons';
+import { MenuUnfoldOutlined, MenuFoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import AgusLogo from '../../../assets/img/png/logo-white.png';
 import "./MenuTop.scss";
 
 
-export default function MenuTop(){
+export default function MenuTop( props ){
+    
+    const {menuCollapsed, setMenuCollapsed} = props;
+
     return (
         <div className="menu-top">
             <div className="menu-top__left">
@@ -14,8 +17,9 @@ export default function MenuTop(){
                     src={AgusLogo}
                     alt="David Gerardo Martínez"
                 />
-                <Button type="link" onClick={() => console.log("Click.")} >
-                    <MenuUnfoldOutlined/>
+                <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)} >
+                    {menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined/>}
+                    
                 </Button>
             </div>
 

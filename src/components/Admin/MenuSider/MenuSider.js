@@ -5,12 +5,14 @@ import { HomeOutlined, MenuOutlined  } from '@ant-design/icons';
 
 import './MenuSider.scss';
 
-export default function MenuSider () {
+export default function MenuSider ( props ) {
     const { Sider } = Layout;
     const { Item } = Menu;
 
+    const { menuCollapsed} = props;
+
     return(
-        <Sider className="admin-sider">
+        <Sider className="admin-sider" collapsed={menuCollapsed}>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                 {/*  Home  */}
                 <Item key='1'>
