@@ -28,3 +28,4 @@ Me hace sentido creer que el index.js es el main y llama a app. Desde app cae co
 
 Nota personal:
     Debo repasar react o meterme a un curso estilo codecademy
+    Repasar cada sección al terminar para reforzar los conceptos
