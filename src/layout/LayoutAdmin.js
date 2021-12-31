@@ -22,7 +22,9 @@ export default function LayoutAdmin( props ) {
                     <MenuTop menuCollapsed={menuCollapsed} setMenuCollapsed={setMenuCollapsed}/>
                 </Header>
 
-                <Content className="layout-admin__content">
+                <Content 
+                className="layout-admin__content" 
+                style={{marginLeft: menuCollapsed ? "80px" : "200px"}}>
                 
                     <LoadRoutes routes = {routes}/>
     

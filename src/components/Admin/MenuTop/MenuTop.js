@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined, PoweroffOutlined } from '@ant-design/icons';
 import AgusLogo from '../../../assets/img/png/logo-white.png';
 import "./MenuTop.scss";
-
+import { Link } from 'react-router-dom';
 
 export default function MenuTop( props ){
     
@@ -12,11 +12,13 @@ export default function MenuTop( props ){
     return (
         <div className="menu-top">
             <div className="menu-top__left">
-                <img 
+                <Link to="/admin">
+                    <img 
                     className="menu-top__left-logo"
                     src={AgusLogo}
                     alt="David Gerardo Martínez"
-                />
+                    />
+                </Link>
                 <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)} >
                     {menuCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined/>}
                     
