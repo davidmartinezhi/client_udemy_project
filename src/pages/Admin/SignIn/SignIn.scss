@@ -1,0 +1,22 @@
+@import "../../../scss/index.scss";
+
+.sign-in {
+    background-image: url("../../../assets/img/jpg/background-v1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+
+        &-logo {
+            padding: 60px 20px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
