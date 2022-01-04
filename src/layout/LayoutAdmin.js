@@ -17,14 +17,15 @@ export default function LayoutAdmin( props ) {
         <Layout>
             {/* TO DO: Menu Sidebar */}
             <MenuSider menuCollapsed={menuCollapsed}/>
-            <Layout className="layout-admin">
+            <Layout 
+            className="layout-admin"
+            style={{marginLeft: menuCollapsed ? "80px" : "200px"}}
+            >
                 <Header className="layout-admin__header">
                     <MenuTop menuCollapsed={menuCollapsed} setMenuCollapsed={setMenuCollapsed}/>
                 </Header>
 
-                <Content 
-                className="layout-admin__content" 
-                style={{marginLeft: menuCollapsed ? "80px" : "200px"}}>
+                <Content className="layout-admin__content" >
                 
                     <LoadRoutes routes = {routes}/>
     
