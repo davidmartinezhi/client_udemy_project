@@ -14,7 +14,24 @@ export function minLengthValidation(inputData, minLength) {
 
 }
 
+export function emailValidation(inputData){
+    //Valida el correo electronico ingresado
 
+    //Expresión regular para validar emails
+    const emailValid = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const { value } = inputData;
+
+    removeClassErrorSuccess(inputData);
+
+    const resultValidation = emailValid.test(value);
+    if(resultValidation){
+        inputData.classList.add('success');
+        return true;
+    } else{
+        inputData.classList.add('error');
+        return false;
+    }
+}
 
 //Helper Functions
 function removeClassErrorSuccess(inputData){
