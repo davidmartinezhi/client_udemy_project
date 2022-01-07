@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
+
+import { emailValidation, minLengthValidation} from '../../../utils/formValidation';
 
 import './RegisterForm.scss';
 
@@ -15,6 +17,12 @@ export default function RegisterForm() {
     });
     //Para que cambie de valor, a los inputs se les debe poner un atributo onChange()
 
+    const [formValid, setFormValid] = useState({
+        email: false,
+        password: false,
+        repeatPassword: false,
+        privacyPolicy: false
+    })
 
     //e significa event, el evento que ocurre para el onChange
     const changeForm = e => {
@@ -45,6 +53,23 @@ export default function RegisterForm() {
         }
     };
 
+
+    const inputValidation = e => {
+        const {type, name, } = e.target;
+        
+        if(type === 'email'){
+            setFormValid({...formValid, [name]: emailValidation(e.target)});
+        }
+
+        if(type === 'password'){
+            setFormValid({...formValid,[name]: minLengthValidation(e.target, 6)});
+        }
+
+        if(type === 'checkbox'){setFormValid({...formValid,[name]: e.target.checked});
+        }
+        
+    };
+
     const register = () => {
         console.log(inputs);
     };
@@ -59,6 +84,7 @@ export default function RegisterForm() {
                     name="email"
                     placeholder="Correo Electronico"
                     className="register-form__input"
+                    onChange={inputValidation}
                     value={inputs.email}
                 />
             </Form.Item>
@@ -70,6 +96,7 @@ export default function RegisterForm() {
                     name="password"
                     placeholder="Contraseña"
                     className="register-form__input"
+                    onChange={inputValidation}
                     value={inputs.password}
                 />                
             </Form.Item>
@@ -81,12 +108,13 @@ export default function RegisterForm() {
                     name="repeatPassword"
                     placeholder="Ingresar nuevamente la contraseña"
                     className="register-form__input"
+                    onChange={inputValidation}
                     value={inputs.repeatPassword}
                 />
             </Form.Item>
 
             <Form.Item>
-                <Checkbox name="privacyPolicy" checked={inputs.privacyPolicy}>
+                <Checkbox name="privacyPolicy" checked={inputs.privacyPolicy} onChange={inputValidation}>
                     He leído y acepto la política de privacidad.
                 </Checkbox>
             </Form.Item>
