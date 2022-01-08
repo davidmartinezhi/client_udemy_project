@@ -2,7 +2,7 @@ import {basePath, apiVersion} from "./config";
 
 export function signUpApi( data ){
     //Función que nos da la dirección del sign-up
-    const url = `${basePath}/${apiVersion}/sign_up`;
+    const url = `${basePath}/${apiVersion}/sign-up`;
 
     //Parametros del end-point
     const params = {
@@ -14,12 +14,13 @@ export function signUpApi( data ){
             "Content-Type": "application/json"
         }
     }
-    console.log(data);
-    //fetch(url, params)
-        //.then(response => {
-        //   console.log(response);
+    
+    //Registra nuestra base de datos
+    fetch(url, params)
+        .then(response => {
+           console.log(response);
             //return response.json();
-        //});
+        });
         //.then(result => {
         //    return result;
         //})
