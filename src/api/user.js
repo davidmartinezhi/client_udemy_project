@@ -17,13 +17,24 @@ export function signUpApi( data ){
     
     //Registra nuestra base de datos
     fetch(url, params)
-        .then(response => {
-           console.log(response);
-            //return response.json();
-        });
-        //.then(result => {
-        //    return result;
-        //})
+      .then((response) => {
+        //Investigar que hace esta función
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        //Si existe el resultado, lo regresa
+        if (result.user) {
+          return result;
+        }
+        return result.message;
+      })
+      .catch((err) => {
+        return err.message;
+        //Mensaje esta en server/controllers/user.js
+        //Donde sale el status 500, que significa que hubo un error
+        //Ahi escribí el mensaje
+      });
 
         
 }
