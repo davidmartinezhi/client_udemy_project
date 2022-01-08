@@ -14,7 +14,7 @@ Config:
 
 api:
     config.js: para configurar constantes basicas de nuestra api
-
+    user.js: Guarda funciones para conectar con los endpoints
 
 *Investigar*
 -Poruqe eciste un index.js y un App.js. Para que existen ambas (creo index.js solo es para llamar a app.js)
