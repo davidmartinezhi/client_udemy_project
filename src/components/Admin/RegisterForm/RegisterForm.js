@@ -56,7 +56,7 @@ export default function RegisterForm() {
 
     const inputValidation = e => {
         const {type, name, } = e.target;
-        
+        console.log(e);
         if(type === 'email'){
             setFormValid({...formValid, [name]: emailValidation(e.target)});
         }
@@ -67,11 +67,33 @@ export default function RegisterForm() {
 
         if(type === 'checkbox'){setFormValid({...formValid,[name]: e.target.checked});
         }
-        
+
     };
 
-    const register = () => {
-        console.log(inputs);
+    const register = (e) => {
+        const {email, password, repeatPassword, privacyPolicy} = formValid;
+
+        const emailVal = inputs.email;
+        const passwordVal = inputs.password;
+        const repeatPasswordVal = inputs.repeatPassword;
+        const privacyPolicyVal = inputs.privacyPolicy;
+
+        if(!emailVal|| !passwordVal || !repeatPasswordVal || !privacyPolicyVal){
+            notification['error']({
+                message: "Todos los campos son obligatorios."
+            });
+        }
+        else{
+            if(passwordVal != repeatPasswordVal){
+                notification['error']({
+                    message: "Las contraseñas no coinciden."
+                });
+            }
+            else{
+                //TO DO: conectar con el api y registrar el usuario. 
+            }
+
+        }
     };
 
     return (
