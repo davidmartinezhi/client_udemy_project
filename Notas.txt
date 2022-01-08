@@ -12,6 +12,9 @@ Layout:
 Config:
     Va a tener todo nuestro sistema de rutas
 
+api:
+    config.js: para configurar constantes basicas de nuestra api
+
 
 *Investigar*
 -Poruqe eciste un index.js y un App.js. Para que existen ambas (creo index.js solo es para llamar a app.js)
