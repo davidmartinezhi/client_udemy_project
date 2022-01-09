@@ -23,11 +23,19 @@ export function signUpApi(data) {
     })
     .then((result) => {
       console.log(result);
-      //Si existe el resultado, lo regresa
+      //Si existe el resultado, lo regresa. Checamos is existe, con el .user
       if (result.user) {
-        return result;
+          //Regresando el mensaje dentro de un objeto
+        return {
+            ok: true,
+            message: "Usuario creado correctamente"
+        };
       }
-      return result.message;
+      //Regresando el mensaje dentro de un objeto
+      return {
+          ok: false,
+          message: result.message
+      };
     })
     .catch((err) => {
       return err.message;
