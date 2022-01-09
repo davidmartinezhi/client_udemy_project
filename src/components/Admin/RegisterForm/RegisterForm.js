@@ -92,9 +92,21 @@ export default function RegisterForm() {
             }
             else{
                 //Funcion siendo asincronica y el await
-                //Se espera hasta que se termine de correr el codigo, para correr esa linea
-                const result = await signUpApi(inputs);
+                //Se espera hasta que se termine de correr el codigo, para correr a la siguiente linea
+                const result = await signUpApi(inputs); //Regresa el objeto response.
                 
+                //Si se lleva a cabo el sign up, notifica al usuario de ello
+                
+                if(!result.ok){ //Si respuesta objeto que resivimos, tiene ok === false
+                    notification['error']({ //Notificamos error
+                        message: result.message
+                    });
+                }
+                else{   //De lo contrario
+                    notification['success']({ //Notificamos que fue exitoso
+                        message: result.message
+                    });
+                }
             }
 
         }

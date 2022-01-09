@@ -16,6 +16,7 @@ export function signUpApi(data) {
   };
 
   //Registra nuestra base de datos
+  //Fetch:  proporciona una forma fácil y lógica de obtener recursos de forma asíncrona por la red.
   //URL Es la ruta del recurso que queremos obtener
   //Params es lo que nos regresa, lo cual es un objeto response con la respuesta que queremos. Es una respuesta HTTP, no una respuesta json
   return fetch(url, params)
