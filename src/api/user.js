@@ -16,29 +16,24 @@ export function signUpApi(data) {
   };
 
   //Registra nuestra base de datos
+  //URL Es la ruta del recurso que queremos obtener
+  //Params es lo que nos regresa, lo cual es un objeto response con la respuesta que queremos. Es una respuesta HTTP, no una respuesta json
   return fetch(url, params)
     .then((response) => {
-      //Investigar que hace esta función
+      //Para extraer el contenido del body, de la respuesta. Usamos el .json()
       return response.json();
     })
     .then((result) => {
-      console.log(result);
       //Si existe el resultado, lo regresa. Checamos is existe, con el .user
       if (result.user) {
           //Regresando el mensaje dentro de un objeto
-        return {
-            ok: true,
-            message: "Usuario creado correctamente"
-        };
+        return {ok: true, message: "Usuario creado correctamente"};
       }
       //Regresando el mensaje dentro de un objeto
-      return {
-          ok: false,
-          message: result.message
-      };
+      return {ok: false, message: result.message};
     })
     .catch((err) => {
-      return err.message;
+      return { ok: false, message: err.message };
       //Mensaje esta en server/controllers/user.js
       //Donde sale el status 500, que significa que hubo un error
       //Ahi escribí el mensaje
