@@ -9,6 +9,8 @@ import './RegisterForm.scss';
 
 export default function RegisterForm() {
     //Inputs tiene el valor y setInputs actualiza el valor
+
+    //Valores en el formulario
     const [inputs, setInputs] = useState({
         //Estado default del formulario
         email: "",
@@ -18,7 +20,9 @@ export default function RegisterForm() {
     });
     //Para que cambie de valor, a los inputs se les debe poner un atributo onChange()
 
+    //Validación de valores en el formulario
     const [formValid, setFormValid] = useState({
+        //Estado default de las validaciones
         email: false,
         password: false,
         repeatPassword: false,
@@ -53,7 +57,6 @@ export default function RegisterForm() {
             });
         }
     };
-
 
     const inputValidation = e => {
         const {type, name, } = e.target;
@@ -110,6 +113,31 @@ export default function RegisterForm() {
             }
 
         }
+    };
+
+    const resetForm = ( ) => {
+        const input = document.getElementsByTagName('input');
+
+        for(let i = 0; i < inputs.length; i++){
+            inputs[i].classList.remove('success');
+            inputs[i].classList.remove('error');
+        }
+
+        setInputs({
+            //Regreso el formulario a su estado default
+            email: "",
+            password:"",
+            repeatPassword: "",
+            privacyPolicy: false    
+        });
+
+        setFormValid({
+            //Regreso a su valor default las variables que validan el formulario
+            email: false,
+            password: false,
+            repeatPassword: false,
+            privacyPolicy: false           
+        });
     };
 
     return (
