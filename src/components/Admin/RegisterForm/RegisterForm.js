@@ -1,16 +1,19 @@
-import React, { useReducer, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 
+//Funciones para validar formulario
 import { emailValidation, minLengthValidation} from '../../../utils/formValidation';
+
+//Manda información para guardar usuario en la base de datos y regresa confirmacion 
 import { signUpApi } from '../../../api/user';
 
-import './RegisterForm.scss';
+import './RegisterForm.scss';   //Estilos del registerForm
 
 export default function RegisterForm() {
+    
+    //Valores en el formulario y base de datos, para la creación de usuario
     //Inputs tiene el valor y setInputs actualiza el valor
-
-    //Valores en el formulario
     const [inputs, setInputs] = useState({
         //Estado default del formulario
         email: "",
@@ -18,7 +21,8 @@ export default function RegisterForm() {
         repeatPassword: "",
         privacyPolicy: false
     });
-    //Para que cambie de valor, a los inputs se les debe poner un atributo onChange()
+    //Para que cambie de valor
+    //Los inputs se les debe poner un atributo onChange() en el FORM y crear la funcion para que muestre el cambio
 
     //Validación de valores en el formulario
     const [formValid, setFormValid] = useState({
@@ -30,6 +34,7 @@ export default function RegisterForm() {
     })
 
     //e significa event, el evento que ocurre para el onChange
+    //Para poder modificar en tiempo real el formulario
     const changeForm = e => {
         //Función que actualiza el forms cuando el usuario interactua con ella
         //Para diferenciar entre el tipo de input que tengo (input y checkbox)
@@ -58,6 +63,7 @@ export default function RegisterForm() {
         }
     };
 
+    //Para validar el input
     const inputValidation = e => {
         const {type, name, } = e.target;
         console.log(e);
@@ -74,6 +80,7 @@ export default function RegisterForm() {
 
     };
 
+    //Para registrar al usuario nuevo en la base de datos
     const register = async e => {
         const {email, password, repeatPassword, privacyPolicy} = formValid;
 
@@ -109,12 +116,14 @@ export default function RegisterForm() {
                     notification['success']({ //Notificamos que fue exitoso
                         message: result.message
                     });
+                    resetForm();    //Regresa el formulario a sus valores default
                 }
             }
 
         }
     };
 
+    //Para regresar el formulario a su estado default
     const resetForm = ( ) => {
         const input = document.getElementsByTagName('input');
 
