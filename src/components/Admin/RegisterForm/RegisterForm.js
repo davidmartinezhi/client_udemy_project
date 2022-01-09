@@ -71,7 +71,7 @@ export default function RegisterForm() {
 
     };
 
-    const register = (e) => {
+    const register = async e => {
         const {email, password, repeatPassword, privacyPolicy} = formValid;
 
         const emailVal = inputs.email;
@@ -91,7 +91,10 @@ export default function RegisterForm() {
                 });
             }
             else{
-                const result = signUpApi(inputs);
+                //Funcion siendo asincronica y el await
+                //Se espera hasta que se termine de correr el codigo, para correr esa linea
+                const result = await signUpApi(inputs);
+                
             }
 
         }
