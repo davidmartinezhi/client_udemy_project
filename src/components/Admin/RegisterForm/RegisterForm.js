@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';    //Usestate, para cambiar estados en el form
+
+//Elementos de ant design para hacer el formulario
+//Form para el objeto form, input para recibir información del usuario
+//Checkbox para los avisos de privacidad y notification para mandar mensajes al usuario
 import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 
@@ -10,6 +14,7 @@ import { signUpApi } from '../../../api/user';
 
 import './RegisterForm.scss';   //Estilos del registerForm
 
+//Componente: Formulario para registrar nuevos usuarios
 export default function RegisterForm() {
     
     //Valores en el formulario y base de datos, para la creación de usuario
@@ -21,8 +26,8 @@ export default function RegisterForm() {
         repeatPassword: "",
         privacyPolicy: false
     });
-    //Para que cambie de valor
-    //Los inputs se les debe poner un atributo onChange() en el FORM y crear la funcion para que muestre el cambio
+    //Para que cambie de valor:
+        //Los inputs se les debe poner un atributo onChange() en el FORM y crear la funcion para que muestre el cambio
 
     //Validación de valores en el formulario
     const [formValid, setFormValid] = useState({
@@ -31,7 +36,8 @@ export default function RegisterForm() {
         password: false,
         repeatPassword: false,
         privacyPolicy: false
-    })
+    });
+    //Cuando el input pase por las funciones que las valida y todas son true. Se valida el formulario
 
     //e significa event, el evento que ocurre para el onChange
     //Para poder modificar en tiempo real el formulario
@@ -82,8 +88,7 @@ export default function RegisterForm() {
 
     //Para registrar al usuario nuevo en la base de datos
     const register = async e => {
-        const {email, password, repeatPassword, privacyPolicy} = formValid;
-
+    
         const emailVal = inputs.email;
         const passwordVal = inputs.password;
         const repeatPasswordVal = inputs.repeatPassword;
@@ -149,6 +154,7 @@ export default function RegisterForm() {
         });
     };
 
+    
     return (
         <Form className="register-form" onFinish={register} onChange={changeForm}>
 
