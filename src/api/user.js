@@ -7,7 +7,7 @@ export function signUpApi(data) {
   //Parametros del end-point
   const params = {
     method: "POST", //Tipo de metodo
-    body: JSON.stringify(data), //Transforma la data, de objeto/valor javascript a tecto json
+    body: JSON.stringify(data), //Transforma la data, de objeto/valor javascript a texto json
 
     headers: {
       //Headers de la petición
@@ -25,7 +25,7 @@ export function signUpApi(data) {
       return response.json();
     })
     .then((result) => {
-      //Si existe el resultado, lo regresa. Checamos is existe, con el .user
+      //Si existe el resultado, lo regresa. Checamos si existe, con el .user
       if (result.user) {
           //Regresando el mensaje dentro de un objeto
         return {ok: true, message: "Usuario creado correctamente"};
