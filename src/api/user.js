@@ -7,7 +7,7 @@ export function signUpApi(data) {
   //Parametros del end-point
   const params = {
     method: "POST", //Tipo de metodo
-    body: JSON.stringify(data), //Transforma la data
+    body: JSON.stringify(data), //Transforma la data, de objeto/valor javascript a tecto json
 
     headers: {
       //Headers de la petición
