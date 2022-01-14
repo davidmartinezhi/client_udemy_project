@@ -20,6 +20,7 @@ export default function LayoutAdmin(props) {
   if (!user) {
 
     //<Redirect to="/admin/login"/> 
+    //Tengo que usar redirect para que me mande a AdminSignIn
     return (
       <>
         <Route path="/admin/login" component={AdminSignIn} />
