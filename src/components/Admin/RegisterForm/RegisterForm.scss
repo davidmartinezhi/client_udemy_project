@@ -12,8 +12,8 @@
 
     &__input{
         
-        .ant-input-prefix{
-            i {
+        .ant-input-prefix {
+            span.anticon {
                 font-size: 0em + 22px / $defaultFontSize;
             }
         }
