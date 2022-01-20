@@ -7,7 +7,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 //Scss stylesheet
 import "./LoginForm.scss";
 
-//Importada función api
+//Importada función api que manda la data al backend para checar
 import { signInApi } from "../../../api/user";
 
 export default function LoginForm(){
