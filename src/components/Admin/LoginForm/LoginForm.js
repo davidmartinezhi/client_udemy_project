@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Ant-Design
 import { Form, Input, Button, notification} from "antd";
@@ -8,8 +8,26 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./LoginForm.scss";
 
 export default function LoginForm(){
+
+    //Inputs del usuario
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: ""
+    });
+
+    //Función para actualizar el form
+    const changeForm = () => {
+        console.log("djbsbvjfks");
+    };
+
+    //Función para el login
+    const login = () => {
+        //Cuando haga login, voy a mostrar la variable
+        console.log(inputs);
+    };
+
     return(
-        <Form className="login-form">
+        <Form className="login-form" onChange={changeForm}>
             <Form.Item>
                 <Input 
                   prefix = {<UserOutlined style={{color: "rgba(0,0,0,.25)"}}/>}
