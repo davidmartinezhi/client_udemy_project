@@ -16,12 +16,22 @@ export function getAccessToken () {
         return null;
     }
 
-    //Checo si el Token ha expirado 
-
+    //Regresa false si el Token no ha expirado y true cuando el Token ha expirado
+    //Si es true, regreso nulo acceso, si es false regreso el accessToken
+    return willExpireToken(accessToken) ? null: accessToken;
 
 }
 
 //Comprueba cuando expira el AccessToken
-function willExpire(){
+function willExpireToken(token){
+    const seconds = 60;
+    const metaToken = jwtDecode(token); //Información dentro del token
 
+    const { exp } = metaToken;
+    const expExpiredTest = exp -100000000;
+
+    const now = (Date.now() + seconds) / 1000; //Se divide entre mil para pasarlo a una fecha en unix
+
+    //Si la hora actual es mayor a la del token, la fecha ha caducado
+    return now > exp;
 }
