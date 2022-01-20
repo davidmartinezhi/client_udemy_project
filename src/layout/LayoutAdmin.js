@@ -7,7 +7,7 @@ import MenuSider from "../components/Admin/MenuSider";
 
 import AdminSignIn from "../pages/Admin/SignIn/SignIn";
 
-import {getAccessToken} from "../api/auth";
+import {getAccessToken, getRefreshToken} from "../api/auth";
 
 import "./LayoutAdmin.scss"; 
 
@@ -19,9 +19,11 @@ export default function LayoutAdmin(props) {
 
   const user = null;
 
-  //Llamo el getAccess Token
-  const token = getAccessToken();
-  console.log(token);
+  //Llamo Tokens
+  const accessToken = getAccessToken();
+  const refreshToken = getRefreshToken();
+  console.log("Access Token: " + accessToken);
+  console.log("Refresh Token: " + refreshToken);
 
   if (!user) {
 
