@@ -41,10 +41,31 @@ export function signUpApi(data) {
     });
 }
 
-export function signInApi(data){
+export function signInApi(data) {
   //Construyo la URL
   const url = `${basePath}/${apiVersion}/sign-in`;
 
-  console.log(url);
-  console.log(data);
+  //Parametros del end-point
+  const params = {
+    method: "POST", //Tipo de metodo
+    body: JSON.stringify(data), //Transforma la data, de objeto/valor javascript a texto json
+
+    headers: {
+      //Headers de la petición
+      "Content-Type": "application/json",
+    },
+  };
+
+  //Retorno el fectch
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then(result => {
+      //Regresa el Access Token y el Refresh Token
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
 }

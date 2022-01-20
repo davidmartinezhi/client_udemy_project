@@ -29,9 +29,7 @@ export default function LoginForm(){
 
     //Función para el login
     const login = e => {
-        
         signInApi(inputs);
-
     };
 
     return(
