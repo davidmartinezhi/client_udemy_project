@@ -15,19 +15,24 @@ export default function LoginForm(){
         password: ""
     });
 
-    //Función para actualizar el form
-    const changeForm = () => {
-        console.log("djbsbvjfks");
+    //Función para actualizar el form, "e" significa evento
+    const changeForm = e => {
+        setInputs({
+            ...inputs, //Para traernos los valores
+            [e.target.name]: e.target.value 
+            //En email despliega el valor que se escribe en ese input e igual en password
+        });
     };
 
     //Función para el login
-    const login = () => {
-        //Cuando haga login, voy a mostrar la variable
-        console.log(inputs);
+    const login = e => {
+        
+        
+
     };
 
     return(
-        <Form className="login-form" onChange={changeForm}>
+        <Form className="login-form" onChange={changeForm} onFinish={login}>
             <Form.Item>
                 <Input 
                   prefix = {<UserOutlined style={{color: "rgba(0,0,0,.25)"}}/>}
