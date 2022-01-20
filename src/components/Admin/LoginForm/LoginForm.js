@@ -50,6 +50,10 @@ export default function LoginForm(){
             //Hago lo mismo con el refreshtoken
             localStorage.setItem(ACCESS_TOKEN, accessToken);
             localStorage.setItem(REFRESH_TOKEN, refreshToken);
+
+            notification["success"]({
+                message:"Login Correcto."
+            });
         }
     };
 
