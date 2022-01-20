@@ -54,6 +54,9 @@ export default function LoginForm(){
             notification["success"]({
                 message:"Login Correcto."
             });
+
+            //Redirecciono hacía el panel administrador
+            window.location.href = "/admin";
         }
     };
 
