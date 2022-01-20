@@ -1,5 +1,6 @@
 import {basePath, apiVersion} from "./config";
 
+//Dar de alta al usuario en la base de datos
 export function signUpApi(data) {
   //Función que nos da la dirección del sign-up
   const url = `${basePath}/${apiVersion}/sign-up`;
@@ -41,6 +42,7 @@ export function signUpApi(data) {
     });
 }
 
+//Activar el acceso, comprobando que existe el usuario. Al recibir el access y refresh token
 export function signInApi(data) {
   //Construyo la URL
   const url = `${basePath}/${apiVersion}/sign-in`;
