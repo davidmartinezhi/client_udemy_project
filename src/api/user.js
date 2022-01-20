@@ -41,3 +41,10 @@ export function signUpApi(data) {
     });
 }
 
+export function signInApi(data){
+  //Construyo la URL
+  const url = `${basePath}/${apiVersion}/sign-in`;
+
+  console.log(url);
+  console.log(data);
+}

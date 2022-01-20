@@ -7,6 +7,9 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 //Scss stylesheet
 import "./LoginForm.scss";
 
+//Importada función api
+import { signInApi } from "../../../api/user";
+
 export default function LoginForm(){
 
     //Inputs del usuario
@@ -27,7 +30,7 @@ export default function LoginForm(){
     //Función para el login
     const login = e => {
         
-        
+        signInApi(inputs);
 
     };
 
