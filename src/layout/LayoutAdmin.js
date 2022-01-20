@@ -7,6 +7,8 @@ import MenuSider from "../components/Admin/MenuSider";
 
 import AdminSignIn from "../pages/Admin/SignIn/SignIn";
 
+import {getAccessToken} from "../api/auth";
+
 import "./LayoutAdmin.scss"; 
 
 export default function LayoutAdmin(props) {
@@ -16,6 +18,10 @@ export default function LayoutAdmin(props) {
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
   const user = null;
+
+  //Llamo el getAccess Token
+  const token = getAccessToken();
+  console.log(token);
 
   if (!user) {
 
