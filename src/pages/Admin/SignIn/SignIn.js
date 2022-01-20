@@ -1,7 +1,7 @@
 import React from "react";
 import {Layout, Tabs} from "antd";
 import { Redirect } from "react-router-dom";
-import  Logo  from "../../../assets/img/png/logo-white.png";
+import  Logo  from "../../../assets/img/png/white_logo_transparent_background copy 2 2.png";
 import RegisterForm from "../../../components/Admin/RegisterForm";
 import LoginForm from "../../../components/Admin/LoginForm/LoginForm";
 
