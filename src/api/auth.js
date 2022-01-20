@@ -9,5 +9,19 @@ import jwtDecode from "jwt-decode";
 
 export function getAccessToken () {
     //Retorna el Access Token
-    return "Ten el access Token";
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
+
+    //Si no existe el accessToken en el localSotrage o regresa falso, regresamos nulo
+    if(!accessToken || accessToken === "null"){
+        return null;
+    }
+
+    //Checo si el Token ha expirado 
+
+
+}
+
+//Comprueba cuando expira el AccessToken
+function willExpire(){
+
 }
