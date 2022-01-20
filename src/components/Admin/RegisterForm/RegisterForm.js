@@ -100,7 +100,7 @@ export default function RegisterForm() {
             });
         }
         else{
-            if(passwordVal != repeatPasswordVal){
+            if(passwordVal !== repeatPasswordVal){
                 notification['error']({
                     message: "Las contraseñas no coinciden."
                 });
@@ -130,7 +130,7 @@ export default function RegisterForm() {
 
     //Para regresar el formulario a su estado default
     const resetForm = ( ) => {
-        const input = document.getElementsByTagName('input');
+        const inputs = document.getElementsByTagName('input');
 
         for(let i = 0; i < inputs.length; i++){
             inputs[i].classList.remove('success');
