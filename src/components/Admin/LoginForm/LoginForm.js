@@ -31,8 +31,26 @@ export default function LoginForm(){
     };
 
     //Función para el login
-    const login = e => {
-        signInApi(inputs);
+    const login = async e => {
+        
+        //Espera a que se termine de ejecutar la función, antes de continuar
+        const result = await signInApi(inputs); //Debe regresar el access y refresh token
+        
+        //Solo regresa un mensaje cuando hubo un error
+        if(result.message){
+            notification["error"]({
+                message: result.message
+            })
+        }
+        else{
+            //Destructuring, saco los tokens del resultado
+            const { accessToken, refreshToken} = result;
+
+            //Local storage, en su variable de access_token le mando el accesstoken del resultado
+            //Hago lo mismo con el refreshtoken
+            localStorage.setItem(ACCESS_TOKEN, accessToken);
+            localStorage.setItem(REFRESH_TOKEN, refreshToken);
+        }
     };
 
     return(
