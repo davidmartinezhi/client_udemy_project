@@ -20,10 +20,12 @@ export default function LayoutAdmin(props) {
   const user = null;
 
   //Llamo Tokens
+  /*
   const accessToken = getAccessToken();
   const refreshToken = getRefreshToken();
   console.log("Access Token: " + accessToken);
   console.log("Refresh Token: " + refreshToken);
+  */
 
   if (!user) {
 
