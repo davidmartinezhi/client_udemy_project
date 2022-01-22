@@ -35,6 +35,39 @@ export function getRefreshToken(){
     return willExpireToken(refreshToken) ? null : refreshToken;
 }
 
+export function refreshAccessToken( refreshToken ){
+
+    const url = `${basePath}/${apiVersion}/refresh-access-token`;
+
+    const bodyObject = {
+        refreshToken: refreshToken
+    }
+
+    const params = {
+        method: "POST",
+        body: JSON.stringify(bodyObject),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    fetch(url, params)
+        .then(response => {
+            if(response.status !== 200){
+                return null;
+            }
+            return response.json();
+        })
+        .then(result => {
+            if(!result){
+                //To Do: Desloggear usuario cuando este expirado el token
+            } else{
+                const {accessToken, refreshToken} = result;
+                localStorage.setItem(ACCESS_TOKEN, accessToken);
+                localStorage.setItem(REFRESH_TOKEN, refreshToken); 
+            }
+        })
+}
 
 //Comprueba cuando expira el AccessToken
 function willExpireToken(token){
@@ -49,3 +82,4 @@ function willExpireToken(token){
     //Si la hora actual es mayor a la del token, la fecha ha caducado
     return now > exp;
 }
+
