@@ -28,7 +28,7 @@ export function getRefreshToken(){
     //Refresh Token
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
-    if(!refreshToken || refreshToken == "null"){
+    if(!refreshToken || refreshToken === "null"){
         return null;
     }
 
