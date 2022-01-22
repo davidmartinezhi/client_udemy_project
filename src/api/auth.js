@@ -35,6 +35,7 @@ export function getRefreshToken(){
     return willExpireToken(refreshToken) ? null : refreshToken;
 }
 
+//Actualiza el token de acceso
 export function refreshAccessToken( refreshToken ){
 
     const url = `${basePath}/${apiVersion}/refresh-access-token`;
@@ -60,13 +61,20 @@ export function refreshAccessToken( refreshToken ){
         })
         .then(result => {
             if(!result){
-                //To Do: Desloggear usuario cuando este expirado el token
+                logout();
             } else{
                 const {accessToken, refreshToken} = result;
                 localStorage.setItem(ACCESS_TOKEN, accessToken);
                 localStorage.setItem(REFRESH_TOKEN, refreshToken); 
             }
         })
+}
+
+//Logout
+export function logout() {
+    //Borra la información en el local storage
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(REFRESH_TOKEN);
 }
 
 //Comprueba cuando expira el AccessToken
