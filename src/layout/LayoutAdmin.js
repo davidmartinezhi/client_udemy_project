@@ -7,7 +7,7 @@ import MenuSider from "../components/Admin/MenuSider";
 
 import AdminSignIn from "../pages/Admin/SignIn/SignIn";
 
-import {getAccessToken, getRefreshToken} from "../api/auth";
+import {getAccessTokenApi, getRefreshTokenApi} from "../api/auth";
 
 import "./LayoutAdmin.scss"; 
 
