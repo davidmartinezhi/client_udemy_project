@@ -7,6 +7,8 @@ import {
   logout,
 } from "../api/auth";
 
+import jwtDecode from "jwt-decode";
+
 export const AuthContext = createContext();
 
 export default function AuthProvider(props) {
@@ -52,7 +54,7 @@ function checkUserLogin(setUser){
     //Si aún es valido el accessToken
     else{
         setUser({
-            user: accessToken,
+            user: jwtDecode(accessToken),
             isLoading: false
         });
     }
