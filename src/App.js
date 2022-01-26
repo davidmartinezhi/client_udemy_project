@@ -1,18 +1,23 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import routes from './config/routes';
+import AuthProvider from './providers/AuthProvider'; 
 
 import "./App.scss";
 
 function App() {
+  //Envolvemos la pagina web con el useAuth para siempre saber si esta loggeado el usuario
+
   return (
-    <Router>
-      <Switch>
-        {routes.map((route, index) => (
+    <AuthProvider>
+      <Router>
+        <Switch>
+          {routes.map((route, index) => (
             <RouteWithSubRoutes key={index} {...route} />
-        ))}
-      </Switch>
-    </Router>
+          ))}
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 
