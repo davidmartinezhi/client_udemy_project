@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined, PoweroffOutlined } from '@ant-design/icons';
-import AgusLogo from '../../../assets/img/png/logo-white.png';
+import AgusLogo from '../../../assets/img/png/white_logo_transparent_background copy.png';
 import "./MenuTop.scss";
 import { Link } from 'react-router-dom';
 
