@@ -7,7 +7,6 @@ import MenuSider from "../components/Admin/MenuSider";
 
 import AdminSignIn from "../pages/Admin/SignIn/SignIn";
 
-import {getAccessTokenApi, getRefreshTokenApi} from "../api/auth";
 import useAuth from "../hooks/useAuth";
 
 import "./LayoutAdmin.scss"; 
@@ -18,15 +17,6 @@ export default function LayoutAdmin(props) {
   const { user, isLoading } = useAuth();
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
-
-
-  //Llamo Tokens
-  /*
-  const accessToken = getAccessToken();
-  const refreshToken = getRefreshToken();
-  console.log("Access Token: " + accessToken);
-  console.log("Refresh Token: " + refreshToken);
-  */
 
   if (!user) {
 
