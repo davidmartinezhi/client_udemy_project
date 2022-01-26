@@ -8,7 +8,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from "../utils/constants";
 import jwtDecode from "jwt-decode";
 
 //Regresa el valor del accessToken
-export function getAccessToken () {
+export function getAccessTokenApi() {
     //Access Token
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
 
@@ -24,7 +24,7 @@ export function getAccessToken () {
 }
 
 //Regresa el valor del refreshToken
-export function getRefreshToken(){
+export function getRefreshTokenApi(){
     //Refresh Token
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
@@ -36,7 +36,7 @@ export function getRefreshToken(){
 }
 
 //Actualiza el token de acceso
-export function refreshAccessToken( refreshToken ){
+export function refreshAccessTokenApi( refreshToken ){
 
     const url = `${basePath}/${apiVersion}/refresh-access-token`;
 
