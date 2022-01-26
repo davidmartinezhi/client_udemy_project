@@ -16,5 +16,5 @@ export default function AuthProvider(props) {
       isLoading: true,
   });
 
-  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 }
