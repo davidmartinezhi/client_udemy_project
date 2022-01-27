@@ -17,7 +17,7 @@ export default function LayoutAdmin(props) {
   console.log(user);
   console.log(isLoading);
 
-  //Si el usuario es nulo y no ha terminado de cargar
+  //Si el usuario es nulo y ha terminado de cargar
   //<Redirect to="/admin/login" />
   if (!user && !isLoading) {
     console.log("Redirect");
