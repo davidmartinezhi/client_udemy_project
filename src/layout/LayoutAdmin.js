@@ -1,36 +1,36 @@
 import React, { useState } from "react";
-import { Route , Switch , Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Layout } from "antd";
-//import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import MenuTop from "../components/Admin/MenuTop";
 import MenuSider from "../components/Admin/MenuSider";
+import AdminSignIn from "../pages/Admin/SignIn";
 
-import AdminSignIn from "../pages/Admin/SignIn/SignIn";
-
-import useAuth from "../hooks/useAuth";
-
-import "./LayoutAdmin.scss"; 
+import "./LayoutAdmin.scss";
 
 export default function LayoutAdmin(props) {
   const { routes } = props;
+  const [menuCollapsed, setMenuCollapsed] = useState(false);
   const { Header, Content, Footer } = Layout;
   const { user, isLoading } = useAuth();
-  const [menuCollapsed, setMenuCollapsed] = useState(false);
 
+  console.log(user);
+  console.log(isLoading);
 
-  if (!user) {
-
-    //<Redirect to="/admin/login"/> 
-    //Tengo que usar redirect para que me mande a AdminSignIn
+  //Si el usuario es nulo y no ha terminado de cargar
+  //<Redirect to="/admin/login" />
+  if (!user && !isLoading) {
+    console.log("Redirect");
     return (
       <>
         <Route path="/admin/login" component={AdminSignIn} />
-        
       </>
     );
   }
 
-  //if (user && !isLoading) {
+  //Si tiene cotendiso y ya termino de cargar
+  if (user && !isLoading) {
+    //Usuario loggeado correctamente
     return (
       <Layout>
         <MenuSider menuCollapsed={menuCollapsed} />
@@ -55,24 +55,24 @@ export default function LayoutAdmin(props) {
         </Layout>
       </Layout>
     );
-  //}
+  }
+
+  return null;
 }
 
-
-function LoadRoutes ( {routes} ){
-    //Map requiere que el hijo siempre tenga una key
-    //map debe estar envuelto en llaves al no estar directamente en Router
-    return (
-        <Switch>
-            {routes.map((route, index) => (
-            <Route 
-                key={index}
-                path = {route.path}
-                exact = {route.exact}
-                component = {route.component}
-            /> 
-            ))}
-        </Switch>
-    );
-
+function LoadRoutes({ routes }) {
+  //Map requiere que el hijo siempre tenga una key
+  //map debe estar envuelto en llaves al no estar directamente en Router
+  return (
+    <Switch>
+      {routes.map((route, index) => (
+        <Route
+          key={index}
+          path={route.path}
+          exact={route.exact}
+          component={route.component}
+        />
+      ))}
+    </Switch>
+  );
 }
