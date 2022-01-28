@@ -5,6 +5,7 @@ import LayoutBasic from '../layout/LayoutBasic';
 //Admin Page
 import AdminHome from '../pages/Admin'; //Al ser importación default, no importa el nombre que le ponga
 import AdminSignIn from '../pages/Admin/SignIn';
+import AdminUsers from '../pages/Admin/Users';
 
 //Pages
 import Home from '../pages/Home';
@@ -32,6 +33,11 @@ const routes = [
                 //davidmartinez.com/admin/login
                 path: "/admin/login",
                 component: AdminSignIn,
+                exact: true
+            },
+            {
+                path: "/admin/users",
+                component: AdminUsers,
                 exact: true
             },
             //Siempre se pone el error 404 al final de las rutas
