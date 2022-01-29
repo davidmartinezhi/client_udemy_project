@@ -14,19 +14,16 @@ export default function LayoutAdmin(props) {
   const { Header, Content, Footer } = Layout;
   const { user, isLoading } = useAuth();
 
-  console.log(user);
-  console.log(isLoading);
-
   //Si el usuario es nulo y ha terminado de cargar
   //<Redirect to="/admin/login" />
   if (!user && !isLoading) {
     return (
-        <Route path="/admin/login" component={AdminSignIn} />
-    );
+      <Route path="/admin/login" component={AdminSignIn} />
+  );
   }
    
   if(!user && isLoading) {
-      return <Redirect to="/admin/login" />
+    return (<Redirect to="/admin/login" />);
   }
   
   //Si tiene cotendiso y ya termino de cargar
