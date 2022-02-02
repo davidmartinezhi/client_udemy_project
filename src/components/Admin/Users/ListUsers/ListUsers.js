@@ -21,6 +21,15 @@ export default function ListUsers(props){
                     {viewUsersActive ? "Usuarios Activos" : "Usuarios Inactivos"}
                 </span>
             </div>
+            {viewUsersActive ? <UsersActive/> : <UsersInactive/>}
         </div>
     );
+}
+
+function UsersActive(){
+    return (<h3>Lista de Usuarios Activos</h3>);
+}
+
+function UsersInactive(){
+    return (<h3>Lista de Usuarios Inactivos</h3>);
 }
