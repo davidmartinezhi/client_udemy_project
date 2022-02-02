@@ -9,9 +9,6 @@ export default function Users() {
     const [usersInactive, setUsersInactive] = useState([]);
     const token = getAccessTokenApi();
 
-    console.log("Users Active: ", usersActive);
-    console.log("Users Inactive:", usersInactive);
-
     useEffect(() => {
         getUsersActiveApi(token, true).then(response => {
             setUsersActive(response);
