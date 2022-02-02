@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Switch, List, Avatar, Button } from "antd";
-
+import {EditOutlined} from "@ant-design/icons";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 
 import "./ListUsers.scss";
@@ -34,19 +34,30 @@ function UserActive(props) {
   
   return (
     <List
-    className="users-active"
-    itemLayout="horizontal"
-    dataSource={usersActive}
-    renderItem={user => (
-      <List.Item>
-        <List.Item.Meta
-          avatar={<Avatar src={user.avatar ? user.avatar : NoAvatar} />}
-          title={`${user.name ? user.name : "..."} ${user.lastname ? user.lastname : "..."}`}
-          description={user.email}
-        />
-      </List.Item>
-    )}
-  />
+      className="users-active"
+      itemLayout="horizontal"
+      dataSource={usersActive}
+      renderItem={(user) => (
+        <List.Item
+          actions={[
+            <Button
+              type="primary"
+              onClick={() => console.log("Editar Usuario")}
+            >
+              <EditOutlined />
+            </Button>,
+          ]}
+        >
+          <List.Item.Meta
+            avatar={<Avatar src={user.avatar ? user.avatar : NoAvatar} />}
+            title={`${user.name ? user.name : "..."} ${
+              user.lastname ? user.lastname : "..."
+            }`}
+            description={user.email}
+          />
+        </List.Item>
+      )}
+    />
   );
 }
 
