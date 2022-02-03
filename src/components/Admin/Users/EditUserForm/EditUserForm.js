@@ -29,7 +29,7 @@ function UploadAvatar(props){
     );
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
-        accept: "image/jpeg, image/png",    //Tipo de archivos que acepta
+        accept: "image/jpeg, image/png image/jpg",    //Tipo de archivos que acepta
         noKeyboard: true,
         onDrop
     });
