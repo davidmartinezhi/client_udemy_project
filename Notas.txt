@@ -1,6 +1,7 @@
 Uso react router, para crear el sistema de rutas
 
-Folders:
+Folders
+
 Pages: 
     Guarda todas nuestras paginas y el archivo con las paginas del admin
     Admin, carpeta con pagina para administradores
@@ -12,9 +13,23 @@ Layout:
 Config:
     Va a tener todo nuestro sistema de rutas
 
+Components:
+    Tiene carpetas que representan cada componente
+
 api:
     config.js: para configurar constantes basicas de nuestra api
     user.js: Guarda funciones para conectar con los endpoints
+
+Hooks:
+    
+
+Providers:
+
+Utils:
+
+Assets:
+
+
 
 *Investigar*
 -Poruqe eciste un index.js y un App.js. Para que existen ambas (creo index.js solo es para llamar a app.js)
