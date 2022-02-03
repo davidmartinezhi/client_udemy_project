@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Switch, List, Avatar, Button } from "antd";
-import {EditOutlined, StopOutlined , DeleteOutlined } from "@ant-design/icons";
+import {EditOutlined, StopOutlined , DeleteOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 
 import "./ListUsers.scss";
@@ -85,23 +85,18 @@ function UserInactive(props) {
       renderItem={(user) => (
         <List.Item
           actions={[
+
             <Button
               type="primary"
-              onClick={() => console.log("Editar Usuario")}
-            >
-              <EditOutlined />
+              onClick={() => console.log("Activar Usuario")}
+              >
+              <CheckCircleOutlined />
             </Button>,
 
             <Button
                 type="danger"
-                onClick={() => console.log("Desactivar Usuario")}
-            >
-                <StopOutlined />
-            </Button>,
-            <Button
-                type="danger"
                 onClick={() => console.log("Eliminar usuario")}
-            >
+                >
                 <DeleteOutlined />
             </Button>
           ]}
