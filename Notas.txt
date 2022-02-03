@@ -21,13 +21,16 @@ api:
     user.js: Guarda funciones para conectar con los endpoints
 
 Hooks:
-    
+
 
 Providers:
+    AuthProvider: Provee un chequeo de que el usuario ha iniciado sesión
 
 Utils:
+    Guarda constantes utilizadas en muchos archivos, por si les modificamos el nombre. Siga sirviendo
 
 Assets:
+    Tiene imagenes
 
 
 
