@@ -25,26 +25,36 @@ export default function ListUsers(props) {
         </span>
       </div>
       {viewUsersActive ? (
-        <UserActive usersActive={usersActive} />
+        <UserActive
+          usersActive={usersActive}
+          setIsVisibleModal={setIsVisibleModal}
+          setModalTitle={setModalTitle}
+          setModalContent={setModalContent}
+        />
       ) : (
         <UserInactive usersInactive={usersInactive} />
       )}
 
-    <Modal
-      title={modalTitle}
-      isVisible = {isVisibleModal}
-      setIsVisible = {setIsVisibleModal}
-    >
-      {modalContent}
-    </Modal>
-
+      <Modal
+        title={modalTitle}
+        isVisible={isVisibleModal}
+        setIsVisible={setIsVisibleModal}
+      >
+        {modalContent}
+      </Modal>
     </div>
   );
 }
 
 function UserActive(props) {
-  const { usersActive } = props;
+  const { usersActive , setIsVisibleModal, setModalTitle, setModalContent} = props;
   
+  const editUser = user => {
+    setIsVisibleModal(true);
+    setModalTitle(`Editar ${user.name ? user.name : "..."} ${user.lastname ? user.lastname : "..."}`);
+    setModalContent("Formulario para editar un usuario.")
+  }
+
   return (
     <List
       className="users-active"
@@ -55,7 +65,7 @@ function UserActive(props) {
           actions={[
             <Button
               type="primary"
-              onClick={() => console.log("Editar Usuario")}
+              onClick={() => editUser(user)}
             >
               <EditOutlined />
             </Button>,
