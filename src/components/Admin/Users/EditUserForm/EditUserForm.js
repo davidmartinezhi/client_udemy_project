@@ -11,7 +11,7 @@ export default function EditUserForm(props){
 
 
     return(
-        <div>
+        <div className='edit-user-form'>
             <UploadAvatar avatar={avatar} setAvatar={setAvatar} />
             <h2>{user.email}</h2>
         </div>
@@ -35,7 +35,7 @@ function UploadAvatar(props){
     });
 
     return(
-        <div className='uploadAvatar' {...getRootProps()}>
+        <div className='upload-avatar' {...getRootProps()}>
             <input {...getInputProps()} />
             {isDragActive ? (
                 //Si no esta activado, muestra el noAvatar
