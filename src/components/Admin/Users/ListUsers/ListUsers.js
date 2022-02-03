@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { Switch, List, Avatar, Button } from "antd";
 import {EditOutlined, StopOutlined , DeleteOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
+import Modal from '../../../Modal';
 
 import "./ListUsers.scss";
 
 export default function ListUsers(props) {
   const { usersActive, usersInactive } = props;
   const [viewUsersActive, setViewUsersActive] = useState(true);
+  const [ isVisibleModal, setIsVisibleModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [ modalContent, setModalContent] = useState(null);
 
   return (
     <div className="list-users">
@@ -21,10 +25,19 @@ export default function ListUsers(props) {
         </span>
       </div>
       {viewUsersActive ? (
-        <UserActive usersActive={usersActive} />
+        <UserActive usersActive={usersActive}  isVisible={isVisible} setIsVisible={setIsVisible}/>
       ) : (
-        <UserInactive usersInactive={usersInactive}/>
+        <UserInactive usersInactive={usersInactive} isVisible={isVisible} setIsVisible={setIsVisible}/>
       )}
+
+    <Modal
+      title={modalTitle}
+      isVisible = {isVisibleModal}
+      setIsVisible = {setIsVisibleModal}
+    >
+      {modalContent}
+    </Modal>
+
     </div>
   );
 }
