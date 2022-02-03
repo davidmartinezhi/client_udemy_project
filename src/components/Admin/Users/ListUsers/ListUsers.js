@@ -25,9 +25,9 @@ export default function ListUsers(props) {
         </span>
       </div>
       {viewUsersActive ? (
-        <UserActive usersActive={usersActive}  isVisible={isVisible} setIsVisible={setIsVisible}/>
+        <UserActive usersActive={usersActive} />
       ) : (
-        <UserInactive usersInactive={usersInactive} isVisible={isVisible} setIsVisible={setIsVisible}/>
+        <UserInactive usersInactive={usersInactive} />
       )}
 
     <Modal
