@@ -76,5 +76,45 @@ function UserActive(props) {
 
 function UserInactive(props) {
   const { usersInactive } = props;
-  return <h3>Lista de Usuarios Inactivos</h3>;
+  
+  return (
+    <List
+      className="users-active"
+      itemLayout="horizontal"
+      dataSource={usersInactive}
+      renderItem={(user) => (
+        <List.Item
+          actions={[
+            <Button
+              type="primary"
+              onClick={() => console.log("Editar Usuario")}
+            >
+              <EditOutlined />
+            </Button>,
+
+            <Button
+                type="danger"
+                onClick={() => console.log("Desactivar Usuario")}
+            >
+                <StopOutlined />
+            </Button>,
+            <Button
+                type="danger"
+                onClick={() => console.log("Eliminar usuario")}
+            >
+                <DeleteOutlined />
+            </Button>
+          ]}
+        >
+          <List.Item.Meta
+            avatar={<Avatar src={user.avatar ? user.avatar : NoAvatar} />}
+            title={`${user.name ? user.name : "..."} ${
+              user.lastname ? user.lastname : "..."
+            }`}
+            description={user.email}
+          />
+        </List.Item>
+      )}
+    />
+  );
 }
