@@ -8,16 +8,32 @@ export default function EditUserForm(props){
 
     const { user } = props;
     const [ avatar, setAvatar ] = useState(null);
+    const [userData, setUserData] = useState({
+        name: user.name,
+        lastname: user.lastname,
+        email = user.email,
+        role = user.role,
+        avatar = user.avatar
+    });
+
+
+    //Función para actualizar el usuario
+    const updateUser = e => {
+
+        console.log(userData);
+
+    }
 
 
     return(
         <div className='edit-user-form'>
             <UploadAvatar avatar={avatar} setAvatar={setAvatar} />
-            <h2>{user.email}</h2>
+            <EditForm user={user} userData={userData} setUserData={setUserData}/>
         </div>
     );
 }
 
+//Para que el usuario pueda subir su foto de perfil
 function UploadAvatar(props){
     const {avatar, setAvatar } = props;
 
@@ -46,4 +62,44 @@ function UploadAvatar(props){
             )}
         </div>
     );
+}
+
+//Edita el formulario del usuario para editar
+function EditForm(props){
+    const { user, userData, setUserData, updateUser} = props;
+    const { Option } = Select;
+
+    return(
+        <Form className="form-edit" onFinish={updateUser}>
+            <Row gutter={24}>
+                <Col span={12}>
+
+                </Col>
+
+                <Col span={12}>
+
+                </Col>
+            </Row>
+            <Row gutter={24}>
+                <Col span={12}>
+
+                </Col>
+
+                <Col span={12}>
+
+                </Col>
+            </Row>
+            <Row gutter={24}>
+                <Col span={12}>
+
+                </Col>
+
+                <Col span={12}>
+
+                </Col>
+            </Row>
+
+        </Form>
+    );
+
 }
