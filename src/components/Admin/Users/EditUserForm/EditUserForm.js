@@ -68,120 +68,124 @@ function UploadAvatar(props){
 }
 
 //Edita el formulario del usuario para editar
-function EditForm(props){
-    const { userData, setUserData, updateUser} = props;
-    const { Option } = Select;
+function EditForm(props) {
+  const { userData, setUserData, updateUser } = props;
+  const { Option } = Select;
 
-    return(
-        <Form className="form-edit" onFinish={updateUser}>
-        {/*Nombre y Apellido*/}
-            <Row gutter={24}>
-                <Col span={12}>
-                    <Form.Item>
-                        <Input 
-                            prefix={<UserOutlined />}
-                            placeholder="Nombre"
-                            defaultValue={userData.name}
-                            onChange={ e => setUserData({
-                                ...userData,
-                                name: e.target.value
-                            })}
-                        />
-                    </Form.Item>
-                </Col>
+  return (
+    <Form className="form-edit" onFinish={updateUser}>
+      {/*Nombre y Apellido*/}
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<UserOutlined />}
+              placeholder="Nombre"
+              defaultValue={userData.name}
+              onChange={(e) =>
+                setUserData({
+                  ...userData,
+                  name: e.target.value,
+                })
+              }
+            />
+          </Form.Item>
+        </Col>
 
-                <Col span={12}>
-                    <Form.Item>
-                        <Input 
-                            prefix={<UserOutlined />}
-                            placeholder="Apellidos"
-                            defaultValue={userData.lastname}
-                            onChange={ e => setUserData({
-                                ...userData,
-                                lastname: e.target.value
-                            })}
-                        />
-                    </Form.Item>
-                </Col>
-            </Row>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<UserOutlined />}
+              placeholder="Apellidos"
+              defaultValue={userData.lastname}
+              onChange={(e) =>
+                setUserData({
+                  ...userData,
+                  lastname: e.target.value,
+                })
+              }
+            />
+          </Form.Item>
+        </Col>
+      </Row>
 
-        {/*Email y Rol*/}
-            <Row gutter={24}>
-                <Col span={12}>
-                    <Form.Item>
-                        <Input 
-                            prefix={<MailOutlined />}
-                            placeholder="Correo Electrónico"
-                            defaultValue={userData.email}
-                            onChange={ (e) => setUserData({
-                                ...userData,
-                                email: e.target.value
-                            })}
-                        />
-                    </Form.Item>
-                </Col>
-                <Col span={12}>
-                    <Form.Item>
-                        <Select
-                        placeholder="Rol Usuario"
-                        onChange={ (e) => setUserData({
-                            ...userData,
-                            role: e //El rol va a ser igual a la acción seleccionada
-                        })}
-                        defaultValue={userData.role}
-                        >
-                            <Option value="admin">
-                                Administrador
-                            </Option>
-                            <Option value="editor">
-                                Editor
-                            </Option>
-                            <Option value="reviewer">
-                                Revisor
-                            </Option>
-                        </Select>
-                    </Form.Item>
-                </Col>
-            </Row>
+      {/*Email y Rol*/}
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<MailOutlined />}
+              placeholder="Correo Electrónico"
+              defaultValue={userData.email}
+              onChange={(e) =>
+                setUserData({
+                  ...userData,
+                  email: e.target.value,
+                })
+              }
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item>
+            <Select
+              placeholder="Rol Usuario"
+              onChange={(e) =>
+                setUserData({
+                  ...userData,
+                  role: e, //El rol va a ser igual a la acción seleccionada
+                })
+              }
+              defaultValue={userData.role}
+            >
+              <Option value="admin">Administrador</Option>
+              <Option value="editor">Editor</Option>
+              <Option value="reviewer">Revisor</Option>
+            </Select>
+          </Form.Item>
+        </Col>
+      </Row>
 
-        {/*Contraseña y repetir constraseña*/}
-            <Row gutter={24}>
-                <Col span={12}>
-                    <Form.Item>
-                        <Input
-                            prefix={<LockOutlined />}
-                            placeholder="Contraseña"
-                            type="password"
-                            onChange={(e) => setUserData({
-                                ...userData,
-                                password: e.target.value
-                            })}
-                        />
-                    </Form.Item>
-                </Col>
+      {/*Contraseña y repetir constraseña*/}
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<LockOutlined />}
+              placeholder="Contraseña"
+              type="password"
+              onChange={(e) =>
+                setUserData({
+                  ...userData,
+                  password: e.target.value,
+                })
+              }
+            />
+          </Form.Item>
+        </Col>
 
-                <Col span={12}>
-                <Form.Item>
-                        <Input
-                            prefix={<LockOutlined />}
-                            placeholder="Repetir Contraseña"
-                            type="password"
-                            onChange={(e) => setUserData({
-                                ...userData,
-                                repeatPassword: e.target.value
-                            })}
-                        />
-                    </Form.Item>
-                </Col>
-            </Row>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<LockOutlined />}
+              placeholder="Repetir Contraseña"
+              type="password"
+              onChange={(e) =>
+                setUserData({
+                  ...userData,
+                  repeatPassword: e.target.value,
+                })
+              }
+            />
+          </Form.Item>
+        </Col>
+      </Row>
 
-            <Form.Item>
-                <Button type="primary" htmlType="submit" className="btn-submit">
-                    Actualizar Usuario
-                </Button>
-            </Form.Item>
-
-        </Form>
-    );
-
+      <Form.Item>
+        <Button type="primary" htmlType="submit" className="btn-submit">
+          Actualizar Usuario
+        </Button>
+      </Form.Item>
+    </Form>
+  );
 }
