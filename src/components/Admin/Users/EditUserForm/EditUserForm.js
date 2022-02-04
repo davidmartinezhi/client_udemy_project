@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Avatar, Form, Input, Select, Button, Row, Col} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import { useDropzone} from 'react-dropzone';
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import "./EditUserForm.scss";
@@ -11,9 +12,9 @@ export default function EditUserForm(props){
     const [userData, setUserData] = useState({
         name: user.name,
         lastname: user.lastname,
-        email = user.email,
-        role = user.role,
-        avatar = user.avatar
+        email: user.email,
+        role: user.role,
+        avatar: user.avatar
     });
 
 
@@ -28,7 +29,7 @@ export default function EditUserForm(props){
     return(
         <div className='edit-user-form'>
             <UploadAvatar avatar={avatar} setAvatar={setAvatar} />
-            <EditForm user={user} userData={userData} setUserData={setUserData}/>
+            <EditForm userData={userData} setUserData={setUserData}/>
         </div>
     );
 }
@@ -66,18 +67,30 @@ function UploadAvatar(props){
 
 //Edita el formulario del usuario para editar
 function EditForm(props){
-    const { user, userData, setUserData, updateUser} = props;
+    const { userData, setUserData, updateUser} = props;
     const { Option } = Select;
 
     return(
         <Form className="form-edit" onFinish={updateUser}>
             <Row gutter={24}>
                 <Col span={12}>
-
+                    <Form.Item>
+                        <Input 
+                            prefix={<UserOutlined />}
+                            placeholder="Nombre"
+                            defaultValue={userData.name}
+                            onChange={ e => setUserData({
+                                ...userData,
+                                name: e.target.value
+                            })}
+                        />
+                    </Form.Item>
                 </Col>
 
                 <Col span={12}>
+                    <Form.Item>
 
+                    </Form.Item>
                 </Col>
             </Row>
             <Row gutter={24}>
@@ -98,6 +111,12 @@ function EditForm(props){
 
                 </Col>
             </Row>
+
+            <Form.Item>
+                <Button>
+                    Actualizar Usuario
+                </Button>
+            </Form.Item>
 
         </Form>
     );
