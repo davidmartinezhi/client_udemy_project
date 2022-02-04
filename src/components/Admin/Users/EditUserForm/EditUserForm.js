@@ -89,10 +89,19 @@ function EditForm(props){
 
                 <Col span={12}>
                     <Form.Item>
-
+                        <Input 
+                            prefix={<UserOutlined />}
+                            placeholder="Apellidos"
+                            defaultValue={userData.lastname}
+                            onChange={ e => setUserData({
+                                ...userData,
+                                lastname: e.target.value
+                            })}
+                        />
                     </Form.Item>
                 </Col>
             </Row>
+
             <Row gutter={24}>
                 <Col span={12}>
 
