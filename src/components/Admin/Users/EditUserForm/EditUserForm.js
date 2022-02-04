@@ -116,11 +116,30 @@ function EditForm(props){
                         />
                     </Form.Item>
                 </Col>
-
                 <Col span={12}>
-
+                    <Form.Item>
+                        <Select
+                        placeholder="Rol Usuario"
+                        onChange={ (e) => setUserData({
+                            ...userData,
+                            role: e //El rol va a ser igual a la acción seleccionada
+                        })}
+                        defaultValue={userData.role}
+                        >
+                            <Option value="admin">
+                                Administrador
+                            </Option>
+                            <Option value="editor">
+                                Editor
+                            </Option>
+                            <Option value="reviewer">
+                                Revisor
+                            </Option>
+                        </Select>
+                    </Form.Item>
                 </Col>
             </Row>
+
             <Row gutter={24}>
                 <Col span={12}>
 
