@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Avatar, Form, Input, Select, Button, Row, Col} from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useDropzone} from 'react-dropzone';
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import "./EditUserForm.scss";
@@ -104,7 +104,17 @@ function EditForm(props){
 
             <Row gutter={24}>
                 <Col span={12}>
-
+                    <Form.Item>
+                        <Input 
+                            prefix={<MailOutlined />}
+                            placeholder="Correo Electrónico"
+                            defaultValue={userData.email}
+                            onChange={ (e) => setUserData({
+                                ...userData,
+                                email: e.target.value
+                            })}
+                        />
+                    </Form.Item>
                 </Col>
 
                 <Col span={12}>
