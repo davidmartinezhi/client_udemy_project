@@ -12,6 +12,8 @@ export default function EditUserForm(props){
     const [userData, setUserData] = useState({
         name: user.name,
         lastname: user.lastname,
+        password: user.password,
+        repeatPassword: user.repeatPassword,
         email: user.email,
         role: user.role,
         avatar: user.avatar
@@ -72,6 +74,7 @@ function EditForm(props){
 
     return(
         <Form className="form-edit" onFinish={updateUser}>
+        {/*Nombre y Apellido*/}
             <Row gutter={24}>
                 <Col span={12}>
                     <Form.Item>
@@ -102,6 +105,7 @@ function EditForm(props){
                 </Col>
             </Row>
 
+        {/*Email y Rol*/}
             <Row gutter={24}>
                 <Col span={12}>
                     <Form.Item>
@@ -140,13 +144,34 @@ function EditForm(props){
                 </Col>
             </Row>
 
+        {/*Contraseña y repetir constraseña*/}
             <Row gutter={24}>
                 <Col span={12}>
-
+                    <Form.Item>
+                        <Input
+                            prefix={<LockOutlined />}
+                            placeholder="Contraseña"
+                            type="password"
+                            onChange={(e) => setUserData({
+                                ...userData,
+                                password: e.target.value
+                            })}
+                        />
+                    </Form.Item>
                 </Col>
 
                 <Col span={12}>
-
+                <Form.Item>
+                        <Input
+                            prefix={<LockOutlined />}
+                            placeholder="Repetir Contraseña"
+                            type="password"
+                            onChange={(e) => setUserData({
+                                ...userData,
+                                repeatPassword: e.target.value
+                            })}
+                        />
+                    </Form.Item>
                 </Col>
             </Row>
 
