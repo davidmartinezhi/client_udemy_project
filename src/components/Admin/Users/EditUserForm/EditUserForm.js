@@ -29,7 +29,7 @@ export default function EditUserForm(props){
     return(
         <div className='edit-user-form'>
             <UploadAvatar avatar={avatar} setAvatar={setAvatar} />
-            <EditForm userData={userData} setUserData={setUserData}/>
+            <EditForm userData={userData} setUserData={setUserData} updateUser={updateUser}/>
         </div>
     );
 }
@@ -113,7 +113,7 @@ function EditForm(props){
             </Row>
 
             <Form.Item>
-                <Button>
+                <Button type="primary" htmlType="submit" className="btn-submit">
                     Actualizar Usuario
                 </Button>
             </Form.Item>
