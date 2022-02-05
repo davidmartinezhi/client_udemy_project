@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { Avatar, Form, Input, Select, Button, Row, Col} from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useDropzone} from 'react-dropzone';
@@ -19,6 +19,15 @@ export default function EditUserForm(props){
         avatar: user.avatar
     });
 
+    //Utilizo useEffect para que se guarde el avatar
+    useEffect(() => {
+        if(avatar){
+            setUserData({
+                ...userData,
+                avatar
+            });
+        }
+    }, [avatar]);
 
     //Función para actualizar el usuario
     const updateUser = e => {
