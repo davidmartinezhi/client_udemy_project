@@ -72,6 +72,7 @@ export function signInApi(data) {
     });
 }
 
+//Accede a todos los usuarios en la base de datos
 export function getUsersApi( token ) {
   const url = `${basePath}/${apiVersion}/users`;
 
@@ -95,6 +96,7 @@ export function getUsersApi( token ) {
   });
 }
 
+//Regresa unicamente usuarios que esten activos o inactivos
 export function getUsersActiveApi( token , status) {
   const url = `${basePath}/${apiVersion}/users-active?active=${status}`;
 
@@ -116,4 +118,30 @@ export function getUsersActiveApi( token , status) {
   .catch(err => {
     return err.message;
   });
+}
+
+//Sube el avatar del usuario a la base de dato
+export function uploadAvatarApi(token, avatar, userId) {
+  const url = `${basePath}/${apiVersion}/upload-avatar/${userId}`;
+  const formData = new FormData(); //Obligatorio para mandar imagen mediante una petición fetch
+  formData.append("avatar", avatar, avatar.name);
+
+  const params = {
+    method: "PUT",
+    body: formData, //La imagen es el form data
+    headers: {
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message; //Errores que yo pongo en el servidor, se regresa aquí
+    });
 }
