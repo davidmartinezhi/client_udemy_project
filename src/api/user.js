@@ -147,12 +147,37 @@ export function uploadAvatarApi(token, avatar, userId) {
 }
 
 //Regresa el avatar del usuario
-export function getAvatarApi(avatarName){
+export function getAvatarApi(avatarName) {
   const url = `${basePath}/${apiVersion}/get-avatar/${avatarName}`;
 
-  return fetch(url).then( response => {
-    return response.url;
-  }).catch(err => {
-    return err.message;
-  })
+  return fetch(url)
+    .then((response) => {
+      return response.url;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+export function updateUserApi(token, user, userId) {
+  const url = `${basePath}/${apiVersion}/update-user/${userId}`;
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify(user),
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
 }
