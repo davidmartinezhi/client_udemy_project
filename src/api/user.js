@@ -145,3 +145,14 @@ export function uploadAvatarApi(token, avatar, userId) {
       return err.message; //Errores que yo pongo en el servidor, se regresa aquí
     });
 }
+
+//Regresa el avatar del usuario
+export function getAvatarApi(avatarName){
+  const url = `${basePath}/${apiVersion}/get-avatar/${avatarName}`;
+
+  return fetch(url).then( response => {
+    return response.url;
+  }).catch(err => {
+    return err.message;
+  })
+}
