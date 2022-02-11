@@ -20,17 +20,7 @@ export default function EditUserForm(props){
         avatar: user.avatar
     });
 
-    //Utilizo useEffect para que se guarde el avatar
-    useEffect(() => {
-        if(avatar){
-            setUserData({
-                ...userData,
-                avatar: avatar.file
-            });
-        }
-    }, [avatar]);
-
-    //Use effect para el avatar
+    //Use effect para regresar el avatar del usuario desde el back-end
     useEffect(() => {
       if(user.avatar){  //Si existe el user.avatar
         getAvatarApi(user.avatar).then(response => {  //Lo pedimos al backend
@@ -42,6 +32,17 @@ export default function EditUserForm(props){
       }
 
     }, [user]); //Todo esto en el user
+
+    //Utilizo useEffect para que sirve para guardar el avatar que seleccione el usuario
+    useEffect(() => {
+        if(avatar){
+            setUserData({
+                ...userData,
+                avatar: avatar.file
+            });
+        }
+    }, [avatar]);
+
 
     //Función para actualizar el usuario
     const updateUser = e => {
