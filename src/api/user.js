@@ -159,6 +159,7 @@ export function getAvatarApi(avatarName) {
     });
 }
 
+//Actualiza la información del usuario en la base de datos
 export function updateUserApi(token, user, userId) {
   const url = `${basePath}/${apiVersion}/update-user/${userId}`;
   const params = {
