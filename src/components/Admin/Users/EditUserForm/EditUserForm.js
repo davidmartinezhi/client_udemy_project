@@ -85,6 +85,7 @@ function UploadAvatar(props){
 
     }, [avatar]);
 
+    //Drop de imagenes por parte del usuario
     const onDrop = useCallback(
         acceptedFiles => {
             const file = acceptedFiles[0];
@@ -98,6 +99,7 @@ function UploadAvatar(props){
         onDrop
     });
 
+    //Return sección donde el usuario elige su avatar en su perfil
     return(
         <div className='upload-avatar' {...getRootProps()}>
             <input {...getInputProps()} />
@@ -106,7 +108,7 @@ function UploadAvatar(props){
                 <Avatar size={150} src={NoAvatar} />
             ) : (
                 //Si ya tiene un avatar lo muestra, sino llama al no avatar
-                <Avatar size={150} src={avatar ? avatar.preview : NoAvatar} />
+                <Avatar size={150} src={avatarUrl ? avatarUrl : NoAvatar} />
             )}
         </div>
     );
