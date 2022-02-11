@@ -2,7 +2,8 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { Avatar, Form, Input, Select, Button, Row, Col} from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useDropzone} from 'react-dropzone';
-import NoAvatar from "../../../../assets/img/png/no-avatar.png";
+import { getAvatarApi } from '../../../../api/user';
+import NoAvatar from '../../../../assets/img/png/no-avatar.png';
 import "./EditUserForm.scss";
 
 export default function EditUserForm(props){
@@ -24,10 +25,23 @@ export default function EditUserForm(props){
         if(avatar){
             setUserData({
                 ...userData,
-                avatar
+                avatar: avatar.file
             });
         }
     }, [avatar]);
+
+    //Use effect para el avatar
+    useEffect(() => {
+      if(user.avatar){  //Si existe el user.avatar
+        getAvatarApi(user.avatar).then(response => {  //Lo pedimos al backend
+          setAvatar(response);  //el avatar ahora es el que nos manda el backend
+        });
+      }
+      else{ //Si no existe el avatar en el backend
+        setAvatar(null);  //El avatar es null
+      }
+
+    }, [user]); //Todo esto en el user
 
     //Función para actualizar el usuario
     const updateUser = e => {
