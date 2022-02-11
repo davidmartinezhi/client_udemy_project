@@ -68,7 +68,22 @@ export default function EditUserForm(props){
 //Para que el usuario pueda subir su foto de perfil
 function UploadAvatar(props){
     const {avatar, setAvatar } = props;
- 
+    const [avatarUrl, setAvatarUrl] = useState(null);
+
+    //Se repite siempre que el valor de avatar se actualice
+    useEffect(() => {
+      if(avatar){
+        if(avatar.preview){
+          setAvatarUrl(avatar.preview);
+        }else{
+          setAvatarUrl(avatar);
+        }
+      }
+      else{
+        setAvatarUrl(null);
+      }
+
+    }, [avatar]);
 
     const onDrop = useCallback(
         acceptedFiles => {
