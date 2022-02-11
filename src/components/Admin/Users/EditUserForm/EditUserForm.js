@@ -128,7 +128,7 @@ function EditForm(props) {
             <Input
               prefix={<UserOutlined />}
               placeholder="Nombre"
-              defaultValue={userData.name}
+              value={userData.name}
               onChange={(e) =>
                 setUserData({
                   ...userData,
@@ -144,7 +144,7 @@ function EditForm(props) {
             <Input
               prefix={<UserOutlined />}
               placeholder="Apellidos"
-              defaultValue={userData.lastname}
+              value={userData.lastname}
               onChange={(e) =>
                 setUserData({
                   ...userData,
@@ -163,7 +163,7 @@ function EditForm(props) {
             <Input
               prefix={<MailOutlined />}
               placeholder="Correo Electrónico"
-              defaultValue={userData.email}
+              value={userData.email}
               onChange={(e) =>
                 setUserData({
                   ...userData,
@@ -183,7 +183,7 @@ function EditForm(props) {
                   role: e, //El rol va a ser igual a la acción seleccionada
                 })
               }
-              defaultValue={userData.role}
+              value={userData.role}
             >
               <Option value="admin">Administrador</Option>
               <Option value="editor">Editor</Option>
