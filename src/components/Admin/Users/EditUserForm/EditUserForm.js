@@ -13,41 +13,33 @@ export default function EditUserForm(props){
     const [userData, setUserData] = useState({}); //user data default es un objeto vacío
 
     //Cada vez que se actualice el user lo guarda
-    useEffect(() => { 
-      setUserData({ //userData ahora tendra esta información
+    useEffect(() => {
+      setUserData({
         name: user.name,
         lastname: user.lastname,
-        password: user.password,
-        repeatPassword: user.repeatPassword,
         email: user.email,
         role: user.role,
         avatar: user.avatar
       });
     }, [user]);
-
-    //Use effect para regresar el avatar del usuario desde el back-end
+  
     useEffect(() => {
-      if(user.avatar){  //Si existe el user.avatar
-        getAvatarApi(user.avatar).then(response => {  //Lo pedimos al backend
-          setAvatar(response);  //el avatar ahora es el que nos manda el backend
+      if (user.avatar) {
+        getAvatarApi(user.avatar).then(response => {
+          setAvatar(response);
         });
+      } else {
+        setAvatar(null);
       }
-      else{ //Si no existe el avatar en el backend
-        setAvatar(null);  //El avatar es null
-      }
-
-    }, [user]); //Todo esto en el user
-
-    //Utilizo useEffect para que sirve para guardar el avatar que seleccione el usuario
+    }, [user]);
+  
     useEffect(() => {
-        if(avatar){
-            setUserData({
-                ...userData,
-                avatar: avatar.file
-            });
-        }
+      if (avatar) {
+        setUserData({ ...userData, avatar: avatar.file });
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [avatar]);
-
+  
 
     //Función para actualizar el usuario
     const updateUser = e => {
@@ -67,51 +59,51 @@ export default function EditUserForm(props){
 
 //Para que el usuario pueda subir su foto de perfil
 function UploadAvatar(props){
-    const {avatar, setAvatar } = props;
-    const [avatarUrl, setAvatarUrl] = useState(null);
+  const { avatar, setAvatar } = props;
+  const [avatarUrl, setAvatarUrl] = useState(null);
 
-    //Se repite siempre que el valor de avatar se actualice
-    useEffect(() => {
-      if(avatar){
-        if(avatar.preview){
-          setAvatarUrl(avatar.preview);
-        }else{
-          setAvatarUrl(avatar);
-        }
+  //Se repite siempre que el valor de avatar se actualice
+
+  useEffect(() => {
+    if (avatar) {
+      if (avatar.preview) {
+        setAvatarUrl(avatar.preview);
+      } else {
+        setAvatarUrl(avatar);
       }
-      else{
-        setAvatarUrl(null);
-      }
+    } else {
+      setAvatarUrl(null);
+    }
+  }, [avatar]);
 
-    }, [avatar]);
+  //Drop de imagenes por parte del usuario
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      setAvatar({ file, preview: URL.createObjectURL(file) });
+    },
+    [setAvatar]
+  );
 
-    //Drop de imagenes por parte del usuario
-    const onDrop = useCallback(
-        acceptedFiles => {
-            const file = acceptedFiles[0];
-            setAvatar({file, preview: URL.createObjectURL(file)})
-        }, [setAvatar]
-    );
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: "image/jpeg, image/png, image/jpg", //Tipo de archivos que acepta
+    noKeyboard: true,
+    onDrop,
+  });
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({
-        accept: "image/jpeg, image/png image/jpg",    //Tipo de archivos que acepta
-        noKeyboard: true,
-        onDrop
-    });
-
-    //Return sección donde el usuario elige su avatar en su perfil
-    return(
-        <div className='upload-avatar' {...getRootProps()}>
-            <input {...getInputProps()} />
-            {isDragActive ? (
-                //Si no esta activado, muestra el noAvatar
-                <Avatar size={150} src={NoAvatar} />
-            ) : (
-                //Si ya tiene un avatar lo muestra, sino llama al no avatar
-                <Avatar size={150} src={avatarUrl ? avatarUrl : NoAvatar} />
-            )}
-        </div>
-    );
+  //Return sección donde el usuario elige su avatar en su perfil
+  return (
+    <div className="upload-avatar" {...getRootProps()}>
+      <input {...getInputProps()} />
+      {isDragActive ? (
+        //Si no esta activado, muestra el noAvatar
+        <Avatar size={150} src={NoAvatar} />
+      ) : (
+        //Si ya tiene un avatar lo muestra, sino llama al no avatar
+        <Avatar size={150} src={avatarUrl ? avatarUrl : NoAvatar} />
+      )}
+    </div>
+  );
 }
 
 //Edita el formulario del usuario para editar
