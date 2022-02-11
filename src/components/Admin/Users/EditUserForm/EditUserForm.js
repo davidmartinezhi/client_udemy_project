@@ -9,8 +9,12 @@ import "./EditUserForm.scss";
 export default function EditUserForm(props){
 
     const { user } = props;
-    const [ avatar, setAvatar ] = useState(null);
-    const [userData, setUserData] = useState({
+    const [ avatar, setAvatar ] = useState(null); //Avatar default es null, significa que no hay avatar
+    const [userData, setUserData] = useState({}); //user data default es un objeto vacío
+
+    //Cada vez que se actualice el user lo guarda
+    useEffect(() => { 
+      setUserData({ //userData ahora tendra esta información
         name: user.name,
         lastname: user.lastname,
         password: user.password,
@@ -18,7 +22,8 @@ export default function EditUserForm(props){
         email: user.email,
         role: user.role,
         avatar: user.avatar
-    });
+      });
+    }, [user]);
 
     //Use effect para regresar el avatar del usuario desde el back-end
     useEffect(() => {
@@ -63,6 +68,7 @@ export default function EditUserForm(props){
 //Para que el usuario pueda subir su foto de perfil
 function UploadAvatar(props){
     const {avatar, setAvatar } = props;
+ 
 
     const onDrop = useCallback(
         acceptedFiles => {
