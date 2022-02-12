@@ -165,7 +165,7 @@ export function updateUserApi(token, user, userId) {
   const params = {
     method: "PUT",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
       Authorization: token,
     },
     body: JSON.stringify(user),
