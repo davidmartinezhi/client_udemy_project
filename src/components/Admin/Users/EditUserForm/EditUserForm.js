@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { Avatar, Form, Input, Select, Button, Row, Col} from 'antd';
+import { Avatar, Form, Input, Select, Button, Row, Col, notification} from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useDropzone} from 'react-dropzone';
 import { getAvatarApi } from '../../../../api/user';
@@ -44,7 +44,7 @@ export default function EditUserForm(props){
     //Función para actualizar el usuario
     const updateUser = e => {
 
-        console.log(userData);
+      
 
     }
 
