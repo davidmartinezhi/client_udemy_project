@@ -9,7 +9,7 @@ import "./EditUserForm.scss";
 
 export default function EditUserForm(props){
 
-    const { user } = props;
+    const { user, setIsVisibleModal } = props;
     const [ avatar, setAvatar ] = useState(null); //Avatar default es null, significa que no hay avatar
     const [userData, setUserData] = useState({}); //user data default es un objeto vacío
 
@@ -47,6 +47,7 @@ export default function EditUserForm(props){
       const token = getAccessTokenApi();
       let userUpdate = userData;
       
+      //Comprueba contraseñas
       if(userUpdate.password || userUpdate.repeatPassword) {
         if(userUpdate.password !== userUpdate.repeatPassword){
           notification["error"]({message: "Las contraseñas tienen que ser iguales."});
@@ -54,11 +55,13 @@ export default function EditUserForm(props){
           return;
       }
 
+      //Comprueba que se hayan puesto los datos
       if(!userUpdate.name || !userUpdate.lastname || !userUpdate.email){
         notification["error"]({message: "Es obligatorio llenar los campos Nombre, Apellido y email."});
         return;
       }
       
+    //Comprueba el avatar y actualiza el usuario
     if (typeof userUpdate.avatar === "object") {
       uploadAvatarApi(token, userUpdate.avatar, user._id).then((response) => {
         userUpdate.avatar = response.avatarName;
@@ -71,6 +74,8 @@ export default function EditUserForm(props){
         notification["success"]({ message: result.message });
       });
     }
+
+    setIsVisibleModal(false);
   };
 
 
