@@ -45,7 +45,7 @@ export default function EditUserForm(props){
     //Función para actualizar el usuario
     const updateUser = e => {
       const token = getAccessTokenApi();
-      const userUpdate = userData;
+      let userUpdate = userData;
       
       if(userUpdate.password || userUpdate.repeatPassword) {
         if(userUpdate.password !== userUpdate.repeatPassword){
@@ -56,9 +56,22 @@ export default function EditUserForm(props){
 
       if(!userUpdate.name || !userUpdate.lastname || !userUpdate.email){
         notification["error"]({message: "Es obligatorio llenar los campos Nombre, Apellido y email."});
+        return;
       }
-      return;
+      
+    if (typeof userUpdate.avatar === "object") {
+      uploadAvatarApi(token, userUpdate.avatar, user._id).then((response) => {
+        userUpdate.avatar = response.avatarName;
+        updateUserApi(token, userUpdate, user._id).then((result) => {
+          notification["success"]({ message: result.message });
+        });
+      });
+    } else {
+      updateUserApi(token, userUpdate, user._id).then((result) => {
+        notification["success"]({ message: result.message });
+      });
     }
+  };
 
 
     return(
