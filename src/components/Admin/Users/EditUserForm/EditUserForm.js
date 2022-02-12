@@ -9,7 +9,7 @@ import "./EditUserForm.scss";
 
 export default function EditUserForm(props){
 
-    const { user, setIsVisibleModal } = props;
+    const { user, setIsVisibleModal, setReloadUsers } = props;
     const [ avatar, setAvatar ] = useState(null); //Avatar default es null, significa que no hay avatar
     const [userData, setUserData] = useState({}); //user data default es un objeto vacío
 
@@ -76,6 +76,7 @@ export default function EditUserForm(props){
     }
 
     setIsVisibleModal(false);
+    setReloadUsers(true);
   };
 
 
