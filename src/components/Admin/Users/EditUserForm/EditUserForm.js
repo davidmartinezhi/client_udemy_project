@@ -44,9 +44,20 @@ export default function EditUserForm(props){
 
     //Función para actualizar el usuario
     const updateUser = e => {
-
+      const token = getAccessTokenApi();
+      const userUpdate = userData;
       
+      if(userUpdate.password || userUpdate.repeatPassword) {
+        if(userUpdate.password !== userUpdate.repeatPassword){
+          notification["error"]({message: "Las contraseñas tienen que ser iguales."});
+        }
+          return;
+      }
 
+      if(!userUpdate.name || !userUpdate.lastname || !userUpdate.email){
+        notification["error"]({message: "Es obligatorio llenar los campos Nombre, Apellido y email."});
+      }
+      return;
     }
 
 
