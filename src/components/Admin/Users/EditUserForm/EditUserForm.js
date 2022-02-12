@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { Avatar, Form, Input, Select, Button, Row, Col, notification} from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useDropzone} from 'react-dropzone';
-import { getAvatarApi } from '../../../../api/user';
+import { getAvatarApi, uploadAvatarApi, updateUserApi } from '../../../../api/user';
 import NoAvatar from '../../../../assets/img/png/no-avatar.png';
 import "./EditUserForm.scss";
 
