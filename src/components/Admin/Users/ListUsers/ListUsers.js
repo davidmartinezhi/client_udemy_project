@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react';
-import { getAvatarApi } from '../../../../api/user';
-import { Switch, List, Avatar, Button } from "antd";
+import { getAvatarApi, activateUserApi } from '../../../../api/user';
+import { getAccessTokenApi } from "../../../../api/auth";
+import { Switch, List, Avatar, Button, notification } from "antd";
 import {EditOutlined, StopOutlined , DeleteOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import Modal from '../../../Modal';
@@ -85,6 +86,19 @@ function UserActive(props){
     }
   },[user]);
 
+  //Función para desactivar el usuario
+  const desactivateUser = () => {
+    const accessToken = getAccessTokenApi();
+
+    activateUserApi(accessToken, user._id, false)
+      .then(response => {
+        notification["success"]({message: response});
+      })
+      .catch(err => {
+        notification["error"]({message: err});
+      });
+  }
+
   return (
     <List.Item
       actions={[
@@ -92,7 +106,7 @@ function UserActive(props){
           <EditOutlined />
         </Button>,
 
-        <Button type="danger" onClick={() => console.log("Desactivar Usuario")}>
+        <Button type="danger" onClick={desactivateUser}>
           <StopOutlined />
         </Button>,
         <Button type="danger" onClick={() => console.log("Eliminar usuario")}>
