@@ -20,7 +20,9 @@ export default function EditUserForm(props){
         lastname: user.lastname,
         email: user.email,
         role: user.role,
-        avatar: user.avatar
+        avatar: user.avatar,
+        password: "",
+        repeatPassword: ""
       });
     }, [user]);
   
@@ -79,6 +81,11 @@ export default function EditUserForm(props){
     }
 
     setIsVisibleModal(false);
+    setUserData({
+      ...userData,
+      password: "",
+      repeatPassword: ""
+    });
     setReloadUsers(true);
   };
 
@@ -227,6 +234,7 @@ function EditForm(props) {
               prefix={<LockOutlined />}
               placeholder="Contraseña"
               type="password"
+              value={userData.password}
               onChange={(e) =>
                 setUserData({
                   ...userData,
@@ -243,6 +251,7 @@ function EditForm(props) {
               prefix={<LockOutlined />}
               placeholder="Repetir Contraseña"
               type="password"
+              value={userData.repeatPassword}
               onChange={(e) =>
                 setUserData({
                   ...userData,
