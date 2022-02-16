@@ -51,8 +51,11 @@ export default function EditUserForm(props){
       if(userUpdate.password || userUpdate.repeatPassword) {
         if(userUpdate.password !== userUpdate.repeatPassword){
           notification["error"]({message: "Las contraseñas tienen que ser iguales."});
-        }
           return;
+        }
+        else {
+          delete userUpdate.repeatPassword; //Borramos la contraseña repetida
+        }
       }
 
       //Comprueba que se hayan puesto los datos
