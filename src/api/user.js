@@ -182,3 +182,30 @@ export function updateUserApi(token, user, userId) {
       return err.message;
     });
 }
+
+//Activa/Desactiva usuario
+//Siempre que se necesita autentificación pasamos el token
+export function activateUserApi(token, userId, status) {
+  const url = `${basePath}/${apiVersion}/activate-user/${userId}`;
+
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    //{active: status} lo uso para que el endpoint sepa que key: value agarrar según como yo lo escribí en el backend
+    body: JSON.stringify({active: status})
+  }
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result.message;
+    })
+    .catch(err => {
+      return err.message;
+    })
+}
