@@ -128,41 +128,56 @@ function UserActive(props){
 
 //Renderiza usuarios no activos
 function UsersInactive(props) {
-  const { usersInactive } = props;
+  const { usersInactive , setReloadUsers} = props;
   
   return (
     <List
       className="users-active"
       itemLayout="horizontal"
       dataSource={usersInactive}
-      renderItem={(user) => <UserInactive user={user} />}
+      renderItem={(user) => <UserInactive user={user} setReloadUsers={setReloadUsers} />}
     />
   );
 }
 
 //Renderiza un solo usuario inactivo
 function UserInactive(props) {
-  const { user } = props;
+  const { user, setReloadUsers } = props;
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
-    if(user.avatar){
+    if (user.avatar) {
       getAvatarApi(user.avatar).then(response => {
         setAvatar(response);
       });
-    }
-    else{
+    } else {
       setAvatar(null);
     }
-  },[user]);
+  }, [user]);
+
+  const activateUser = () => {
+    const accesToken = getAccessTokenApi();
+
+    activateUserApi(accesToken, user._id, true)
+      .then(response => {
+        notification["success"]({
+          message: response
+        });
+        setReloadUsers(true);
+      })
+      .catch(err => {
+        notification["error"]({
+          message: err
+        });
+      });
+  };
   
   return(
     <List.Item
     actions={[
-
       <Button
         type="primary"
-        onClick={() => console.log("Activar Usuario")}
+        onClick={activateUser}
         >
         <CheckCircleOutlined />
       </Button>,
@@ -183,6 +198,5 @@ function UserInactive(props) {
       description={user.email}
     />
   </List.Item>
-  );
-  
+  ); 
 }
