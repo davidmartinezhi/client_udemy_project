@@ -65,14 +65,14 @@ function UsersActive(props) {
       className="users-active"
       itemLayout="horizontal"
       dataSource={usersActive}
-      renderItem={(user) => <UserActive user={user} editUser={editUser}/>}
+      renderItem={(user) => <UserActive user={user} editUser={editUser} setReloadUsers={setReloadUsers} />}
     />
   );
 }
 
 //Componente para renderizar un unico usuario
 function UserActive(props){
-  const { user, editUser} = props;
+  const { user, editUser, setReloadUsers } = props;
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
@@ -93,6 +93,7 @@ function UserActive(props){
     activateUserApi(accessToken, user._id, false)
       .then(response => {
         notification["success"]({message: response});
+        setReloadUsers(true);
       })
       .catch(err => {
         notification["error"]({message: err});
