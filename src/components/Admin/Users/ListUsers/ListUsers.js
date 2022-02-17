@@ -36,7 +36,9 @@ export default function ListUsers(props) {
           setReloadUsers={setReloadUsers}
         />
       ) : (
-        <UsersInactive usersInactive={usersInactive} />
+        <UsersInactive 
+          usersInactive={usersInactive} 
+          setReloadUsers={setReloadUsers}/>
       )}
 
       <Modal
