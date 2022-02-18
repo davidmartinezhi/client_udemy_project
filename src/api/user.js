@@ -218,12 +218,12 @@ export function deleteUserApi(token, userId) {
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
-    },
+    }
   };
 
   return fetch(url, params)
     .then((response) => {
-      return response.json;
+      return response.json();
     })
     .then((result) => {
       return result.message;
