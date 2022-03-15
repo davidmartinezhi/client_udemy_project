@@ -22,7 +22,7 @@ import {
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm";
-
+import AddUserForm from "../AddUserForm";
 import "./ListUsers.scss";
 
 //Importación global
@@ -67,10 +67,7 @@ export default function ListUsers(props) {
     setIsVisibleModal(true);
     setModalTitle("Creando Nuevo Usuario");
     setModalContent(
-      <div>
-        <h1>Formulario Creación de usuario.</h1>
-        <h2>Admin</h2>
-      </div>
+      <AddUserForm setIsVisibleModal={setIsVisibleModal} setReloadUsers={setReloadUsers}/>
     );
   }
 

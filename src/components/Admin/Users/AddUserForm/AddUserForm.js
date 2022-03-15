@@ -4,3 +4,11 @@ import {signUpAdminApi} from "../../../../api/user";
 import {getAccessTokenApi} from "../../../../api/auth";
 
 import "./AddUserForm.scss";
+
+export default function AddUserForm(props){
+    return (
+        <div>
+            <h1>Hola Mundo</h1>
+        </div>
+    );
+}
