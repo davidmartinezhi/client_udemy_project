@@ -254,6 +254,6 @@ export function signUpAdminApi(token, data) {
       return result.message;
     })
     .catch(err => {
-      err.message;
+      return err.message;
     });
 }
