@@ -232,3 +232,28 @@ export function deleteUserApi(token, userId) {
       return err.message;
     });
 }
+
+//Conexión con backend para mandar info del nuevo usuario, toda el token del admin y la data que quiere insertar
+export function signUpAdminApi(token, data) {
+  const url = `${basePath}/${apiVersion}/sign-up-admin`;
+
+  const params = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    body: JSON.stringify(data)
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result.message;
+    })
+    .catch(err => {
+      err.message;
+    });
+}
