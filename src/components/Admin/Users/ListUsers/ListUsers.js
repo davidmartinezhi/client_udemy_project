@@ -61,6 +61,19 @@ export default function ListUsers(props) {
     });
   };
 
+
+  //Función para el modal de addUser
+  const addUserModal = () => {
+    setIsVisibleModal(true);
+    setModalTitle("Creando Nuevo Usuario");
+    setModalContent(
+      <div>
+        <h1>Formulario Creación de usuario.</h1>
+        <h2>Admin</h2>
+      </div>
+    );
+  }
+
   return (
     <div className="list-users">
       <div className="list-users__header">
@@ -73,7 +86,7 @@ export default function ListUsers(props) {
             {viewUsersActive ? "Usuarios Activos" : "Usuarios Inactivos"}
           </span>
         </div>
-        <Button type="primary" onClick={() => console.log("Creando usuario")}>
+        <Button type="primary" onClick={addUserModal}>
           Nuevo Usuario
         </Button>
       </div>
