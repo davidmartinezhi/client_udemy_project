@@ -63,15 +63,21 @@ export default function ListUsers(props) {
 
   return (
     <div className="list-users">
-      <div className="list-users__switch">
-        <Switch
-          defaultChecked
-          onChange={() => setViewUsersActive(!viewUsersActive)}
-        />
-        <span>
-          {viewUsersActive ? "Usuarios Activos" : "Usuarios Inactivos"}
-        </span>
+      <div className="list-users__header">
+      <div className="list-users__header-switch">
+          <Switch
+            defaultChecked
+            onChange={() => setViewUsersActive(!viewUsersActive)}
+          />
+          <span>
+            {viewUsersActive ? "Usuarios Activos" : "Usuarios Inactivos"}
+          </span>
+        </div>
+        <Button type="primary" onClick={() => console.log("Creando usuario")}>
+          Nuevo Usuario
+        </Button>
       </div>
+
       {viewUsersActive ? (
         <UsersActive
           usersActive={usersActive}
