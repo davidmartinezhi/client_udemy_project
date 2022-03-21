@@ -81,12 +81,12 @@ export default function EditUserForm(props){
     }
 
     setIsVisibleModal(false);
+    setReloadUsers(true);
     setUserData({
       ...userData,
       password: "",
       repeatPassword: ""
     });
-    setReloadUsers(true);
   };
 
 
