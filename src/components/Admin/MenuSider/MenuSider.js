@@ -6,29 +6,32 @@ import { HomeOutlined, GroupOutlined  } from '@ant-design/icons';
 import './MenuSider.scss';
 
 function MenuSider ( props ) {
-    const { Sider } = Layout;
-    const { Item } = Menu;
-
     const { menuCollapsed, location } = props;
+    const { Sider } = Layout;
 
     return(
         <Sider className="admin-sider" collapsed={menuCollapsed}>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
+            <Menu
+                theme="dark"
+                mode="inline"
+                defaultSelectedKeys={[location.pathname]}
+                //defaultSelectedKeys={["/admin/users"]}
+            >
                 {/*  Home  */}
-                <Item key='/admin'>
-                    <Link to={"/admin"}>
-                        <HomeOutlined />
-                        <span className="nav-text">Home</span>
-                    </Link>
-                </Item>
+                <Menu.Item key="/admin">
+                <Link to="/admin">
+                    <HomeOutlined />
+                    <span className="nav-text">Home</span>
+                </Link>
+                </Menu.Item> 
 
-                {/*  */}
-                <Item key='/admin/users'>
+                {/* Users */}
+                <Menu.Item key="/admin/users">
                     <Link to="/admin/users">
-                        <GroupOutlined />
-                        <span className="nav-text"> Usuarios </span>
+                    <GroupOutlined />
+                        <span className="nav-text">Usuarios</span>
                     </Link>
-                </Item>
+                </Menu.Item>
             </Menu>
         </Sider>
     );
