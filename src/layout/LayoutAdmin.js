@@ -21,11 +21,6 @@ export default function LayoutAdmin(props) {
       <Route path="/admin/login" component={AdminSignIn} />
   );
   }
-   
-  if(!user && isLoading) {
-    return (<Redirect to="/admin/login" />);
-  }
-  
   //Si tiene cotendiso y ya termino de cargar
   if (user && !isLoading) {
     //Usuario loggeado correctamente
@@ -58,7 +53,7 @@ export default function LayoutAdmin(props) {
   return null;
 }
 
-function LoadRoutes({ routes }) {
+function LoadRoutes( { routes }) {
   //Map requiere que el hijo siempre tenga una key
   //map debe estar envuelto en llaves al no estar directamente en Router
   return (
