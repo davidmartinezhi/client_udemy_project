@@ -1,8 +1,28 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { getMenuApi } from '../../../api/menu';
 //import "./MenuWeb.scss"
 
 export default function MenuWeb() {
+
+    //Estado donde guardamos el menu
+    const [menu, setMenu] = useState([]);
+    const [reloadMenuWeb, setReloadMenuWeb] = useState(false);
+
+    
+    
+    //Cuando editemos un menu, pediremos nuevamente los menús de la base de datos
+    //Se pintan los menus en el front otra vez, sin tener que recargar la pagina
+    useEffect(() => {
+        getMenuApi().then( response => {
+            console.log(response.menusStored);
+            setMenu(response.menusStored);
+        });
+
+        setReloadMenuWeb(false);    //Cuando lo cambiamos a true, lo vuelve a poner en false
+
+    }, [reloadMenuWeb]);
+    
+
     return (
         <div className='menu-web'>
             <h1>Menu Web</h1>
