@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getMenuApi } from '../../../api/menu';
+import MenuWebList from '../../../components/Admin/MenuWeb/MenuWebList';
 //import "./MenuWeb.scss"
 
 export default function MenuWeb() {
@@ -14,18 +15,17 @@ export default function MenuWeb() {
     //Se pintan los menus en el front otra vez, sin tener que recargar la pagina
     useEffect(() => {
         getMenuApi().then( response => {
-            console.log(response.menusStored);
             setMenu(response.menusStored);
         });
 
         setReloadMenuWeb(false);    //Cuando lo cambiamos a true, lo vuelve a poner en false
 
     }, [reloadMenuWeb]);
-    
+
 
     return (
         <div className='menu-web'>
-            <h1>Menu Web</h1>
+            < MenuWebList menu={menu} setReloadMenuWeb={setReloadMenuWeb} />
         </div>
     );
 }
