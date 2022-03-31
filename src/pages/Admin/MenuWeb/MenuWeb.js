@@ -15,6 +15,7 @@ export default function MenuWeb() {
     //Se pintan los menus en el front otra vez, sin tener que recargar la pagina
     useEffect(() => {
         getMenuApi().then( response => {
+            //console.log(response.menu);
             setMenu(response.menusStored);
         });
 
