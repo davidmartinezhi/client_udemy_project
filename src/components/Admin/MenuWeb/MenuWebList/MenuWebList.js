@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { Switch, List, Button, Icon, Modal as ModalAntd, notification} from 'antd';
+import { Switch, List, Button, Modal as ModalAntd, notification} from 'antd';
+import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
 import Modal from "../../../Modal";
 import PropTypes from 'prop-types';
 import DragSortableList from 'react-drag-sortable';
@@ -21,7 +22,9 @@ export default function MenuWebList(props){
         const listItemsArray = [];
         menu.forEach(item => {
             listItemsArray.push({
-                content: (<div><p>{item.title}</p></div>)
+                content: (
+                <MenuItem item={item}/>
+                )
             });
         });
         setListItems(listItemsArray);
@@ -46,5 +49,22 @@ export default function MenuWebList(props){
                 <DragSortableList items={listItems} onSort={onSort} type="vertical"/>
             </div>
         </div>
+    );
+}
+
+
+function MenuItem(props){
+    const {item} = props;
+
+    return(
+        <List.Item
+            actions={[
+                <Switch defaultChecked={item.active}/>,
+                <Button type="primary" ><EditOutlined /></Button>,
+                <Button type="danger"><DeleteOutlined /></Button>
+            ]}
+        >
+            <List.Item.Meta title={item.title} description={item.url} />
+        </List.Item>
     );
 }
