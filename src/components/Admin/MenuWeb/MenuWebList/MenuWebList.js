@@ -4,6 +4,8 @@ import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
 import Modal from "../../../Modal";
 import PropTypes from 'prop-types';
 import DragSortableList from 'react-drag-sortable';
+import {updateMenuApi} from "../../../../api/menu";
+import {getAccessTokenApi} from "../../../../api/auth";
 
 import "./MenuWebList.scss";
 
@@ -30,8 +32,17 @@ export default function MenuWebList(props){
         setListItems(listItemsArray);
     }, [menu]);
 
+    //Actualizando el orden de las listas
     const onSort = (sortedList, dropEvent) => {
-        console.log(sortedList);
+        const accessToken = getAccessTokenApi();
+
+        //En la pagina, se actualiza el orden en la parte de rank
+        sortedList.forEach((item) => {
+            const {_id} = item.content.props.item;  //Sacamos la id del menú
+            const order = item.rank;    //Sacamos la posición que tiene en la pagina actualmente y la asignamos como el order
+
+            updateMenuApi(accessToken, _id, {order}); //Mandamos a actualizar la api
+        });
     }
 
     return(
