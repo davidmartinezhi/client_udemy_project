@@ -42,6 +42,16 @@ export default function MenuWebList(props){
         });
     }
 
+    const addMenuWebModal = () => {
+        setIsVisibleModal(true);
+        setModalTitle("Creando nuevo menú");
+        setModalContent(
+            <div>
+                <h1>Creando nuevo menú</h1>
+            </div>
+        );
+    }
+
     //Actualizando el orden de las listas
     const onSort = (sortedList, dropEvent) => {
         const accessToken = getAccessTokenApi();
@@ -60,8 +70,8 @@ export default function MenuWebList(props){
 
             {/* HEADER */}
             <div className='menu-web-list__header'>
-                <Button type="primary">
-                    Menú menú
+                <Button type="primary" onClick={addMenuWebModal}>
+                    Crear Menú
                 </Button>
             </div>
 
@@ -69,6 +79,13 @@ export default function MenuWebList(props){
             <div className='menu-web-list__items'>
                 <DragSortableList items={listItems} onSort={onSort} type="vertical"/>
             </div>
+            <Modal
+                title={modalTitle}
+                isVisible={isVisibleModal}
+                setIsVisible={setIsVisibleModal}
+            >
+                {modalContent}
+            </Modal>
         </div>
     );
 }
