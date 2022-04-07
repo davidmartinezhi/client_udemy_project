@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import DragSortableList from 'react-drag-sortable';
 import {updateMenuApi, activateMenuApi} from "../../../../api/menu";
 import {getAccessTokenApi} from "../../../../api/auth";
+import AddMenuWebForm from '../AddMenuWeb/AddMenuWebForm';
 
 import "./MenuWebList.scss";
 
@@ -46,9 +47,7 @@ export default function MenuWebList(props){
         setIsVisibleModal(true);
         setModalTitle("Creando nuevo menú");
         setModalContent(
-            <div>
-                <h1>Creando nuevo menú</h1>
-            </div>
+            <AddMenuWebForm />
         );
     }
 
