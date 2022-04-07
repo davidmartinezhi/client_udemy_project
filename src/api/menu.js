@@ -1,4 +1,3 @@
-import api from "../../../server/routers/menu";
 import { basePath, apiVersion } from "./config";
 
 //Recuperamos el menú
@@ -68,6 +67,6 @@ export function activateMenuApi( token, menuId, status) {
       return result.message;
     })
     .catch(err => {
-      return err;
+      console.log(err);
     });
 }
