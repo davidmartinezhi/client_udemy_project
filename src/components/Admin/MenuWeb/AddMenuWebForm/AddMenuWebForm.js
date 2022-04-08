@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { Form, Input, Button, Select, notification} from "antd";
 import {FontSizeOutlined} from "@ant-design/icons";
-import { addMenuApi } from "../../../../../api/menu";
-import { getAccessTokenApi } from "../../../../../api/auth";
+import { addMenuApi } from "../../../../api/menu";
+import { getAccessTokenApi } from "../../../../api/auth";
 import "./AddMenuWebForm.scss";
 
 export default function AddMenuWebForm( props ) {
