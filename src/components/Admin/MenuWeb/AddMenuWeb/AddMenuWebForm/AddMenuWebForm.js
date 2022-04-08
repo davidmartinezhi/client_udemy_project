@@ -13,8 +13,36 @@ export default function AddMenuWebForm( props ) {
 
 
     const addMenu = e => {
-        console.log("Creando menú");
-        console.log(menuWebData);
+
+        let finalData = {
+            title: menuWebData.title,
+            url: (menuWebData.http ? menuWebData.http : "http://") + menuWebData.url
+        };
+
+        //Validar los datos
+        if(!finalData || !finalData.url || !menuWebData.url){
+            notification["error"]({message: "Todos los campos son obligatorios."});
+        }
+        else{
+            //Conseguimos access token
+            const accessToken = getAccessTokenApi();    //Conseguimos el access token
+            finalData.active = false;   //inicializamos el menu como inactivo
+            finalData.order = 1000; //mandamos el menú al final
+
+            //Función para agregar el menú a la base de datos
+            addMenuApi(accessToken, finalData)
+                .then( response => {
+                    notification["success"]({message: response});   //Si sale bien, lo notificamos
+                    setIsVisibleModal(false);   //Cerramos el modal
+                    setReloadMenus(true);   //Recargamos los menus
+                    setMenuWebData({}); //Reiniciamos los valores de los objetos que guardan la info
+                    finalData({});
+                })
+                .catch((err) => {
+                    notification["error"]({message: "Error en el servidor"});
+                })
+        }
+        
     }
 
 
