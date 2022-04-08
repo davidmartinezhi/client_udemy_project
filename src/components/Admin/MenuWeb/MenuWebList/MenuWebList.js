@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import DragSortableList from 'react-drag-sortable';
 import {updateMenuApi, activateMenuApi} from "../../../../api/menu";
 import {getAccessTokenApi} from "../../../../api/auth";
-import AddMenuWebForm from '../AddMenuWeb/AddMenuWebForm';
+import AddMenuWebForm from '../AddMenuWebForm';
+import EditMenuWebForm from '../EditMenuWebForm';
 
 import "./MenuWebList.scss";
 
@@ -26,7 +27,11 @@ export default function MenuWebList(props){
         menu.forEach(item => {
             listItemsArray.push({
                 content: (
-                <MenuItem item={item} activateMenu={activateMenu}/>
+                <MenuItem 
+                    item={item} 
+                    activateMenu={activateMenu} 
+                    editMenuWebModal={editMenuWebModal}
+                />
                 )
             });
         });
@@ -53,6 +58,18 @@ export default function MenuWebList(props){
             />
         );
     };
+
+    const editMenuWebModal = ( menu ) => {
+        setIsVisibleModal(true);
+        setModalTitle(`Editando menú: ${menu.title}`);
+        setModalContent(
+            <EditMenuWebForm 
+                setIsVisibleModal={setIsVisibleModal}
+                setReloadMenuWeb={setReloadMenuWeb}
+                menu={menu}
+            />
+        );
+    }
 
     //Actualizando el orden de las listas
     const onSort = (sortedList, dropEvent) => {
@@ -94,17 +111,24 @@ export default function MenuWebList(props){
 
 
 function MenuItem(props){
-    const {item, activateMenu} = props;
+    const {item, activateMenu, editMenuWebModal } = props;
 
-    return(
-        <List.Item
-            actions={[
-                <Switch defaultChecked={item.active} onChange={e => activateMenu(item, e)}/>,
-                <Button type="primary" ><EditOutlined /></Button>,
-                <Button type="danger"><DeleteOutlined /></Button>
-            ]}
-        >
-            <List.Item.Meta title={item.title} description={item.url} />
-        </List.Item>
+    return (
+      <List.Item
+        actions={[
+          <Switch
+            defaultChecked={item.active}
+            onChange={(e) => activateMenu(item, e)}
+          />,
+          <Button type="primary" onClick={() => editMenuWebModal(item)}>
+            <EditOutlined />
+          </Button>,
+          <Button type="danger">
+            <DeleteOutlined />
+          </Button>,
+        ]}
+      >
+        <List.Item.Meta title={item.title} description={item.url} />
+      </List.Item>
     );
 }
