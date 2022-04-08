@@ -6,7 +6,7 @@ import { getAccessTokenApi } from "../../../../../api/auth";
 import "./AddMenuWebForm.scss";
 
 export default function AddMenuWebForm( props ) {
-    const {setIsVisibleModal, setReloadMenus} = props;
+    const {setIsVisibleModal, setReloadMenuWeb} = props;
 
     //Aquí se guardarán los datos del nuevo menú
     const [menuWebData, setMenuWebData] = useState({});
@@ -34,9 +34,9 @@ export default function AddMenuWebForm( props ) {
                 .then( response => {
                     notification["success"]({message: response});   //Si sale bien, lo notificamos
                     setIsVisibleModal(false);   //Cerramos el modal
-                    setReloadMenus(true);   //Recargamos los menus
+                    setReloadMenuWeb(true);   //Recargamos los menus
                     setMenuWebData({}); //Reiniciamos los valores de los objetos que guardan la info
-                    finalData({});
+                    finalData = {};
                 })
                 .catch((err) => {
                     notification["error"]({message: "Error en el servidor"});

@@ -14,7 +14,7 @@ const { confirm } = ModalAntd;
 
 export default function MenuWebList(props){
 
-    const { menu, setReloadMenus } = props;
+    const { menu, setReloadMenuWeb } = props;
     const [listItems, setListItems] = useState([]);
     const [isVisibleModal, setIsVisibleModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
@@ -41,18 +41,18 @@ export default function MenuWebList(props){
                 message: response
             });
         });
-    }
+    };
 
     const addMenuWebModal = () => {
         setIsVisibleModal(true);
         setModalTitle("Creando nuevo menú");
         setModalContent(
             <AddMenuWebForm 
-                setIsVisible={setIsVisibleModal}
-                setReloadMenus={setReloadMenus}
+                setIsVisibleModal={setIsVisibleModal}
+                setReloadMenuWeb={setReloadMenuWeb}
             />
         );
-    }
+    };
 
     //Actualizando el orden de las listas
     const onSort = (sortedList, dropEvent) => {
