@@ -4,7 +4,7 @@ import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
 import Modal from "../../../Modal";
 import PropTypes from 'prop-types';
 import DragSortableList from 'react-drag-sortable';
-import {updateMenuApi, activateMenuApi} from "../../../../api/menu";
+import {updateMenuApi, activateMenuApi, deleteMenuApi} from "../../../../api/menu";
 import {getAccessTokenApi} from "../../../../api/auth";
 import AddMenuWebForm from '../AddMenuWebForm';
 import EditMenuWebForm from '../EditMenuWebForm';
@@ -31,6 +31,7 @@ export default function MenuWebList(props){
                     item={item} 
                     activateMenu={activateMenu} 
                     editMenuWebModal={editMenuWebModal}
+                    deleteMenu={deleteMenu}
                 />
                 )
             });
@@ -69,6 +70,27 @@ export default function MenuWebList(props){
                 menu={menu}
             />
         );
+    }
+
+    const deleteMenu = (menu) => {
+        const accessToken = getAccessTokenApi();
+        confirm({
+            title: "Eliminando Menú",
+            content: `¿Estas seguro que quieres eliminar el menú: ${menu.title}?`,
+            okText: "Eliminar",
+            okTyoe: "danger",
+            cancelText: "Cancelar",
+            onOk() {
+                deleteMenuApi(accessToken, menu._id)
+                    .then(response => {
+                        notification["success"]({message: response});
+                        setReloadMenuWeb(true);
+                    })
+                    .catch(() => {
+                        notification["error"]({message: "Error del servidor, intentelo más tarde."})
+                    })
+            }
+        })
     }
 
     //Actualizando el orden de las listas
@@ -111,7 +133,7 @@ export default function MenuWebList(props){
 
 
 function MenuItem(props){
-    const {item, activateMenu, editMenuWebModal } = props;
+    const {item, activateMenu, editMenuWebModal, deleteMenu } = props;
 
     return (
       <List.Item
@@ -123,7 +145,7 @@ function MenuItem(props){
           <Button type="primary" onClick={() => editMenuWebModal(item)}>
             <EditOutlined />
           </Button>,
-          <Button type="danger">
+          <Button type="danger" onClick={() => deleteMenu(item)}>
             <DeleteOutlined />
           </Button>,
         ]}
