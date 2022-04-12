@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route , Switch } from 'react-router-dom';
 import {Layout, Row, Col} from 'antd';
+import MenuTop from '../components/Web/MenuTop';
 
 import './LayoutBasic.scss';
 
@@ -17,7 +18,7 @@ export default function LayoutBasic( props ){
         <Row>
             <Col md={4} />
             <Col md={16}>
-                <p>MenuTop</p>
+                <MenuTop />
                 <LoadRoutes routes={routes} />
                 <Footer>
                     David Gerardo Martínez
@@ -27,20 +28,6 @@ export default function LayoutBasic( props ){
             
         </Row>
     );
-
-    // return(
-    //     <Layout>
-    //         <h2>Menu...</h2>
-    //         <Layout>
-    //             <Content>
-    //                 <LoadRoutes routes={routes} />
-    //             </Content>
-    //             <Footer>
-    //                 David Gerardo Martínez
-    //             </Footer>
-    //         </Layout>
-    //     </Layout>
-    // );
 }
 
 
