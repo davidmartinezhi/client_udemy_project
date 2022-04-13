@@ -25,7 +25,6 @@ export default function LayoutBasic( props ){
                 </Footer>
             </Col>
             <Col md={4} />
-            
         </Row>
     );
 }

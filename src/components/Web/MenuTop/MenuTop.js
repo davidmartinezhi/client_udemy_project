@@ -32,31 +32,33 @@ export default function MenuTop() {
           <img src={logoWhite} alt="David Gerardo Martínez Hidrogo" />
         </Link>
       </Menu.Item>
+        <div className="menu-top-web__nav">
+        {
+            menuData.map((item) => {
+                //Si el url tiene http en el texto, significa que es una ruta externa
+                //Entonces si tiene un -1, significa que no se encontro http dentro del string y es local
+                const external = item.url.indexOf("http") > -1 ? true : false;
 
-      {
-      menuData.map((item) => {
-        //Si el url tiene http en el texto, significa que es una ruta externa
-        //Entonces si tiene un -1, significa que no se encontro http dentro del string y es local
-        const external = item.url.indexOf("http") > -1 ? true : false;
+                if (external) {
+                return (
+                    <Menu.Item key={item._id} className="menu-top-web__item">
+                    <a href={item.url} target="_blank">{item.title}</a>
+                    </Menu.Item>
+                );
+                }
 
-        if (external) {
-          return (
-            <Menu.Item key={item._id} className="menu-top-web__item">
-              <a href={item.url} target="_blank">{item.title}</a>
-            </Menu.Item>
-          );
+                return (
+                    <Menu.Item
+                        key={item._id}
+                        className="menu-top-web__item"
+                    >
+                        <Link to={item.url}>{item.title}</Link>
+                    </Menu.Item>
+                );
+            })
         }
+        </div>
 
-        return (
-            <Menu.Item
-                key={item._id}
-                className="menu-top-web__item"
-            >
-                <Link to={item.url}>{item.title}</Link>
-            </Menu.Item>
-        );
-      })
-      }
 
       {/* <Menu.Item className='menu-top-web__item'>
             <Link to={"/"}>Home</Link>
@@ -65,7 +67,7 @@ export default function MenuTop() {
             <Link to={"/contact"}>Contacto</Link>
         </Menu.Item> */}
 
-      <SocialLinks />
+      <SocialLinks className="menu-top-web__social"/>
     </Menu>
   );
 }
