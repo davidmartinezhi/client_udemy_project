@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Menu} from 'antd'
 import {Link} from 'react-router-dom'
+import SocialLinks from '../SocialLinks'
 import {getMenuApi} from '../../../api/menu'
 import logoWhite from '../../../assets/img/png/white_logo_transparent_background copy.png'
 import './MenuTop.scss'
@@ -64,7 +65,7 @@ export default function MenuTop() {
             <Link to={"/contact"}>Contacto</Link>
         </Menu.Item> */}
 
-      <div>Social Media...</div>
+      <SocialLinks />
     </Menu>
   );
 }
