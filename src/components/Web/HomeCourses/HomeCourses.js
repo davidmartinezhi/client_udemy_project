@@ -22,7 +22,7 @@ export default function HomeCourses() {
         <Col md={4}></Col>
         <Col md={16}>
           <Row className="row-courses">
-            <Col md={6}>
+            <Col md={8}>
               <CardCourses
                 image={reactJsHooks}
                 title="ReactJs Hooks"
@@ -30,11 +30,11 @@ export default function HomeCourses() {
                 link="https://twitter.com/davidmtzhi"
               />
             </Col>
-            <Col md={6}>Curso...</Col>
-            <Col md={6}>Curso...</Col>
-            <Col md={6}>Curso...</Col>
-            <Col md={6}>Curso...</Col>
-            <Col md={6}>Curso...</Col>
+            <Col md={8}>Curso...</Col>
+            <Col md={8}>Curso...</Col>
+            <Col md={8}>Curso...</Col>
+            <Col md={8}>Curso...</Col>
+            <Col md={8}>Curso...</Col>
           </Row>
         </Col>
         <Col md={4}></Col>
