@@ -18,7 +18,7 @@ export default function LayoutBasic( props ){
     */
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     window.addEventListener('resize', () => {setWindowWidth(window.innerWidth)});
-
+    console.log(windowWidth);
     const [isActive, setIsActive] = useState(false);
 
     const toggleButton = useCallback(
@@ -31,7 +31,7 @@ export default function LayoutBasic( props ){
             <Row>
                 <Col md={4} />
                 <Col md={16}>
-                    {windowWidth > 500 ? <MenuTop /> : <MenuTopMobile isActive={isActive} toggleButton={toggleButton} />}
+                    {windowWidth > 750 ? <MenuTop /> : <MenuTopMobile isActive={isActive} toggleButton={toggleButton} />}
                 </Col>
                 <Col md={4} />
             </Row>
