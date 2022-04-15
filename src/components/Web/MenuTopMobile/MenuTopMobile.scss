@@ -1,5 +1,49 @@
+@import '../../../scss/index.scss';
+
+
 .menu-top-web-mobile{
     position: absolute;
-    top: 60px;
+    top: 55px;
     height: 50%;
+    width: 50%;
+    background-color: $background-dark-web;
+    border: 0 !important;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    li{
+        border: 0 !important;
+
+        .ant-menu-active{
+            color: $primary-color-light;
+        }
+
+        a{
+            color: $primary-color !important;
+            font-weight: bold;
+
+            &:hover{
+                color: $primary-color-light !important;
+            }
+        }
+    }
+
+
+    &__nav{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-left: 10%;
+    }
+
+    &__social{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
+
