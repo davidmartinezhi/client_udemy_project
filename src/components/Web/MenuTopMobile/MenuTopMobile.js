@@ -4,7 +4,8 @@ import { Row, Col, Menu } from "antd";
 import { Link } from "react-router-dom";
 import SocialLinks from "../SocialLinks";
 import { getMenuApi } from "../../../api/menu";
-import { HamburgerArrow , HamburgerCollapse} from "react-animated-burgers";
+import { HamburgerCollapse} from "react-animated-burgers";
+import logoWhite from '../../../assets/img/png/white_logo_transparent_background copy.png'
 
 import "./MenuTopMobile.scss";
 
@@ -20,6 +21,9 @@ export default function MenuTopMobile(props) {
             barColor = "white"
               {...{ isActive, toggleButton }}
             />
+            <Link to={"/"}>
+                <img src={logoWhite} className="logoWhite" alt="David Gerardo Martínez Hidrogo" />
+            </Link>
           </Col>
         </Row>
     );
@@ -33,6 +37,9 @@ export default function MenuTopMobile(props) {
             barColor = "white"
               {...{ isActive, toggleButton }}
             />
+            <Link to={"/"}>
+                <img src={logoWhite} className="logoWhite" alt="David Gerardo Martínez Hidrogo" />
+            </Link>
           </Col>
         </Row>
         <MenuMobile />
