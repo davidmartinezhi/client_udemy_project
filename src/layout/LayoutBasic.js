@@ -15,17 +15,19 @@ export default function LayoutBasic( props ){
     Para que ocupe la pantalla completa en tablet, sería con lg
     */
     return (
-        <Row>
-            <Col md={4} />
-            <Col md={16}>
-                <MenuTop />
-                <LoadRoutes routes={routes} />
-                <Footer>
-                    David Gerardo Martínez
-                </Footer>
-            </Col>
-            <Col md={4} />
-        </Row>
+        <>
+            <Row>
+                <Col md={4} />
+                <Col md={16}>
+                    <MenuTop />
+                </Col>
+                <Col md={4} />
+            </Row>
+            <LoadRoutes routes={routes} />
+            <Footer>
+                David Gerardo Martínez
+            </Footer>
+        </>
     );
 }
 
