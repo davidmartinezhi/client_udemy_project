@@ -29,11 +29,11 @@ export default function LayoutBasic( props ){
     return (
         <>
             <Row>
-                <Col md={4} />
-                <Col md={16}>
+                <Col lg={4} />
+                <Col lg={16}>
                     {windowWidth > 750 ? <MenuTop /> : <MenuTopMobile isActive={isActive} toggleButton={toggleButton} />}
                 </Col>
-                <Col md={4} />
+                <Col lg={4} />
             </Row>
             <LoadRoutes routes={routes} />
             <Footer>
