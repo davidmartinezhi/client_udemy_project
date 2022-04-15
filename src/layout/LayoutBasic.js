@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import { Route , Switch } from 'react-router-dom';
 import {Layout, Row, Col} from 'antd';
 import MenuTop from '../components/Web/MenuTop';
+import MenuTopMobile from '../components/Web/MenuTopMobile';
+
 
 import './LayoutBasic.scss';
 
@@ -14,12 +16,22 @@ export default function LayoutBasic( props ){
     Ayuda a que en mobil, abarque la pantalla completa, pero tenga padding en pantalla media y grande
     Para que ocupe la pantalla completa en tablet, sería con lg
     */
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    window.addEventListener('resize', () => {setWindowWidth(window.innerWidth)});
+
+    const [isActive, setIsActive] = useState(false);
+
+    const toggleButton = useCallback(
+      () => setIsActive(prevState => !prevState),
+      [],
+    )
+
     return (
         <>
             <Row>
                 <Col md={4} />
                 <Col md={16}>
-                    <MenuTop />
+                    {windowWidth > 500 ? <MenuTop /> : <MenuTopMobile isActive={isActive} toggleButton={toggleButton} />}
                 </Col>
                 <Col md={4} />
             </Row>
