@@ -24,7 +24,12 @@ export default function HomeCourses() {
             <Col md={16}>
                 <Row className="row-courses">
                     <Col md={6}>
-                        Curso...
+                        <CardCourses 
+                            image={reactJsHooks}
+                            title="ReactJs Hooks"
+                            subtitle="Intermedio - React/Javascript"
+                            link="https://twitter.com/davidmtzhi"
+                        />
                     </Col>
                     <Col md={6}>
                         Curso...
@@ -47,4 +52,22 @@ export default function HomeCourses() {
         </Row>
     </>
   )
+}
+
+function CardCourses( props ){
+    const { image, title, subtitle, link } = props;
+
+    const {Meta} = Card;
+
+    return(
+        <a href={link} target="_blank">
+            <Card
+                className="gone-courses__card"
+                cover={<img src={image} alt={title}/>}
+                actions={[<Button>INGRESAR</Button>]}
+            >
+                <Meta title={title} description={subtitle} />
+            </Card>
+        </a>
+    );
 }
