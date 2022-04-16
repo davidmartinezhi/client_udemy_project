@@ -1,17 +1,59 @@
 @import '../../../scss/index.scss';
 
-.home-courses{
+.home-courses {
     margin-top: 50px;
     margin-bottom: 50px;
 
-    &__title{
+    &__title {
         text-align: center;
-        
-        h2{
+
+        h2 {
             color: $font-light;
             font-weight: bold;
             size: 32px;
             text-transform: uppercase;
         }
     }
+
+    .row-courses {
+        .ant-col {
+            padding: 15px !important;
+        }
+    }
+
+    &__card {
+        border: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 300px;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .75);
+        -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .75);
+        -moz-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .75);
+
+        .ant-card-body {
+            text-align: center;
+
+            .ant-card-meta-title,
+            .ant-card-meta-description {
+                color: black;
+            }
+
+            .ant-card-meta-title {
+                font-weight: bold;
+            }
+        }
+
+        .ant-card-actions {
+            background-color: transparent;
+            border: 0;
+
+            button {
+                width: 90%;
+                border: 1px solid $primary-color;
+                height: 35px;
+            }
+        }
+
+    }
+
 }

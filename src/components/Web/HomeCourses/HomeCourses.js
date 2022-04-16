@@ -22,7 +22,7 @@ export default function HomeCourses() {
         <Col md={4}></Col>
         <Col md={16}>
           <Row className="row-courses">
-            <Col md={8}>
+            <Col md={6}>
               <CardCourses
                 image={reactJsHooks}
                 title="ReactJs Hooks"
@@ -30,11 +30,50 @@ export default function HomeCourses() {
                 link="https://twitter.com/davidmtzhi"
               />
             </Col>
-            <Col md={8}>Curso...</Col>
-            <Col md={8}>Curso...</Col>
-            <Col md={8}>Curso...</Col>
-            <Col md={8}>Curso...</Col>
-            <Col md={8}>Curso...</Col>
+            <Col md={6}>
+              <CardCourses
+                image={reactNative}
+                title="React Native Expo"
+                subtitle="Intermedio - React/Javascript"
+                link="https://twitter.com/davidmtzhi"
+              />
+            </Col>
+            <Col md={6}>
+              <CardCourses
+                image={javascript}
+                title="Javascript ES6"
+                subtitle="Básico - React/Javascript"
+                link="https://twitter.com/davidmtzhi"
+              />
+            </Col>
+            <Col md={6}>
+              <CardCourses
+                image={wordPress}
+                title="Wordpress"
+                subtitle="Básico - Wordpress"
+                link="https://twitter.com/davidmtzhi"
+              />
+            </Col>
+            <Row className="row-courses">
+              <Col md={6}>
+                <CardCourses
+                  image={prestaShop}
+                  title="PrestaShop 1.7"
+                  subtitle="Básico - PrestaShop"
+                  link="https://twitter.com/davidmtzhi"
+                />
+              </Col>
+              <Col md={6}></Col>
+              <Col md={6}></Col>
+              <Col md={6}>
+                <CardCourses
+                  image={cssGrid}
+                  title="CSS Grid"
+                  subtitle="Intermedio - CSS"
+                  link="https://twitter.com/davidmtzhi"
+                />
+              </Col>              
+            </Row>
           </Row>
         </Col>
         <Col md={4}></Col>
@@ -51,7 +90,7 @@ function CardCourses(props) {
   return (
     <a href={link} target="_blank">
       <Card
-        className="gone-courses__card"
+        className="home-courses__card"
         cover={<img src={image} alt={title} />}
         actions={[<Button>INGRESAR</Button>]}
       >
