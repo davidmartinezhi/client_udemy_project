@@ -1,1 +1,23 @@
 @import '../../../scss/index.scss';
+
+.how-my-courses-work{
+    margin-top: 100px;
+    margin-bottom: 50px;
+
+    &__title{
+        text-align: center;
+        line-height: 0.7;
+        margin-bottom: 40px;
+
+        h2{
+            color: $font-light;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        h3{
+            color: gray;
+        }
+    }
+}
