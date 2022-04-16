@@ -54,7 +54,8 @@ export default function HomeCourses() {
                 link="https://twitter.com/davidmtzhi"
               />
             </Col>
-            <Row className="row-courses">
+          </Row>
+          <Row className="row-courses">
               <Col md={6}>
                 <CardCourses
                   image={prestaShop}
@@ -73,10 +74,14 @@ export default function HomeCourses() {
                   link="https://twitter.com/davidmtzhi"
                 />
               </Col>              
-            </Row>
           </Row>
         </Col>
         <Col md={4}></Col>
+        <Col md={24} className="home-courses__more">
+          <Link to="/courses">
+            <Button>Ver más</Button>
+          </Link>
+        </Col>
       </Row>
     </>
   );
