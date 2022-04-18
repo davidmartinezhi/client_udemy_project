@@ -1,1 +1,1 @@
-import {default} from './ReviewsCourses';
+export {default} from './ReviewsCourses';
