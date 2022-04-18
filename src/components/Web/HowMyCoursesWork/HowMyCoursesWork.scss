@@ -20,4 +20,45 @@
             color: gray;
         }
     }
+
+    .row-cards{
+        .ant-col{
+            padding: 15px !important;
+        }
+    }
+
+    &__card {
+        border: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+
+        .ant-card-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 215px;
+
+        }
+
+        .anticon{
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .ant-card-meta-detail{
+            .ant-card-meta-title{
+                color: black;
+                font-size: 25px;
+                font-weight: bold;
+            }
+
+            .ant-card-meta-description{
+                color: gray;
+            }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Col, Row, Card} from 'antd'
-import {ClockCircleOutlined, KeyOutlined, MessageOutlined} from '@ant-design/icons'
+import {ClockCircleOutlined, KeyOutlined, MessageOutlined, UserOutlined, DollarCircleOutlined, CheckCircleOutlined} from '@ant-design/icons'
 import './HowMyCoursesWork.scss'
 
 export default function HowMyCoursesWork() {
@@ -41,23 +41,23 @@ export default function HowMyCoursesWork() {
             <Row className="row-cards">
                 <Col md={8}>
                     <CardInfo 
-                        icon={<ClockCircleOutlined />} 
-                        title="Cursos y Clases"
-                        subtitle="Cursos de entre 10 y 30 horas de contenido"
+                        icon={<UserOutlined />} 
+                        title="Mejora tu perfil"
+                        subtitle="Aprende y mejora tu perfil profesional"
                     />
                 </Col>
                 <Col md={8}>
                     <CardInfo 
-                        icon={<KeyOutlined />} 
-                        title="Acceso 24/7"
-                        subtitle="Accede a los cursos en cualquier momento"
+                        icon={<DollarCircleOutlined />} 
+                        title="Precios Bajos"
+                        subtitle="Acceso y soporte ilimitado, por solo 9.99"
                     />
                 </Col>
                 <Col md={8}>
                     <CardInfo 
-                        icon={<MessageOutlined />} 
-                        title="Aprendizaje Colaborativo"
-                        subtitle="Aprende en conjunto al publicar tus preguntas"
+                        icon={<CheckCircleOutlined />} 
+                        title="Certificados de finalización"
+                        subtitle="Udemy te manda un certificado de finalización del curso"
                     />
                 </Col>
             </Row>
