@@ -1,7 +1,7 @@
 import React from 'react'
 import {Layout, Row, Col} from 'antd'
 import MyInfo from './MyInfo';
-import NavegationFooter from './NavegationFooter/NavegationFooter';
+import NavegationFooter from './NavegationFooter';
 
 import './Footer.scss'
 
