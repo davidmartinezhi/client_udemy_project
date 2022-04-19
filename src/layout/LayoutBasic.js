@@ -3,13 +3,13 @@ import { Route , Switch } from 'react-router-dom';
 import {Layout, Row, Col} from 'antd';
 import MenuTop from '../components/Web/MenuTop';
 import MenuTopMobile from '../components/Web/MenuTopMobile';
+import Footer from '../components/Web/Footer';
 
 
 import './LayoutBasic.scss';
 
 export default function LayoutBasic( props ){
     const { routes } = props;   //Sistema de rutas que me llega por props
-    const { Content , Footer } = Layout; //Para usar de manera directa esos componentes
 
     /* 
     Columnas md 4, md 16 y md 4
@@ -18,7 +18,6 @@ export default function LayoutBasic( props ){
     */
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     window.addEventListener('resize', () => {setWindowWidth(window.innerWidth)});
-    console.log(windowWidth);
     const [isActive, setIsActive] = useState(false);
 
     const toggleButton = useCallback(
@@ -36,9 +35,7 @@ export default function LayoutBasic( props ){
                 <Col lg={4} />
             </Row>
             <LoadRoutes routes={routes} />
-            <Footer>
-                David Gerardo Martínez
-            </Footer>
+            <Footer />
         </>
     );
 }
