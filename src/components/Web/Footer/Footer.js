@@ -1,5 +1,6 @@
 import React from 'react'
 import {Layout, Row, Col} from 'antd'
+import MyInfo from './MyInfo';
 
 import './Footer.scss'
 
@@ -12,7 +13,7 @@ export default function Footer() {
             <Col md={16}>
                 <Row>
                     <Col md={8}>
-                        Mi información...
+                        <MyInfo />
                     </Col>
                     <Col md={8}>
                         Navegación...
