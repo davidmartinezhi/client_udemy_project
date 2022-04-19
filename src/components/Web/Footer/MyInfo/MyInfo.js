@@ -1,5 +1,5 @@
 import React from 'react'
-
+import SocialLinks from '../../SocialLinks'
 import logoWhite from '../../../../assets/img/png/white_logo_transparent_background copy 2 2.png'
 import './MyInfo.scss'
 
@@ -10,6 +10,7 @@ export default function MyInfo() {
         <h4>Entra en el mundo del desarrollo web, disfruta creando proyectos de todo
         tipo, deja que tú imaginación fluya y crea verdaderas maravillas!!
         </h4>
+        <SocialLinks/>
     </div>
   )
 }
