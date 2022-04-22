@@ -2,6 +2,7 @@ import React from 'react'
 import {Layout, Row, Col} from 'antd'
 import MyInfo from './MyInfo';
 import NavegationFooter from './NavegationFooter';
+import NewsLetter from '../NewsLetter';
 
 import './Footer.scss'
 
@@ -20,7 +21,7 @@ export default function Footer() {
                         <NavegationFooter />
                     </Col>
                     <Col md={8}>
-                        Newsletter...
+                        <NewsLetter />
                     </Col>
                 </Row>
                 <Row className='footer__copyright'>
