@@ -1,6 +1,6 @@
 import { basePath, apiVersion } from "./config";
 
-export default function getCoursesApi() {
+export function getCoursesApi() {
     const url = `${basePath}/${apiVersion}/get-courses`;
 
     return fetch(url)
