@@ -1,11 +1,29 @@
 @import '../../../../scss/index.scss';
 
 .courses-list{
-    
+
     &__header{
         display: flex;
         align-items: center;
         justify-content: flex-end;
         margin-bottom: 20px;
+    }
+
+    &__items{
+        background-color: #fff;
+        padding: 10px 20px;
+
+        .List{
+            position: relative;
+
+            .draggable {
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.5);
+                
+                &:hover{
+                    course: pointer;
+                }
+            }
+        }
     }
 }
