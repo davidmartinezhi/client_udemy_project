@@ -23,7 +23,17 @@
                 &:hover{
                     course: pointer;
                 }
+
+                &.dragged{
+                    border: 1px solid #e2e2e2;
+                    padding: 0 10px;
+                }
             }
+        }
+
+        .ant-list-item-meta{
+            display: flex;
+            align-items: center;
         }
     }
 }
