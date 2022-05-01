@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { List, Button, Modal as ModalAntd, notification } from "antd";
-import {} from "@ant-design/icons";
+import {EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import DragSortableList from "react-drag-sortable";
 import Modal from "../../../Modal";
 
@@ -18,13 +18,18 @@ export default function CoursesList(props) {
 
   useEffect(() => {
     const listCourseArray = [];
-    courses.forEach((course) => {
+    courses.forEach(course => {
       listCourseArray.push({
-        content: <Course course={course} />,
+        content: (
+          <Course
+            course={course}
+          />
+        )
       });
     });
     setListCourses(listCourseArray);
-  }, []);
+  }, [courses]);
+
 
   const onSort = (sortedList, dropEvent) => {
     console.log(sortedList);
@@ -50,7 +55,51 @@ export default function CoursesList(props) {
   );
 }
 
+
+
+
+//Componente de curso
 function Course(props) {
   const { course } = props;
-  return <h1>Hola mundo</h1>;
+  const [courseData, setCourseData] = useState(null);
+
+    //Actualiza el curso cuando tiene cambios
+  useEffect(() => {
+    getCourseDataUdemyApi(course.idCourse).then(response => {
+      if (response.code !== 200) {  //Si no existe el curso, manda un warning
+        notification["warning"]({
+          message: `El curso con el id ${course.idCourse} no se ha encontrado.`
+        });
+      }
+      setCourseData(response.data);
+    });
+  }, [course]);
+
+  //Si no existe el curso, no lo imprime
+  if (!courseData) {
+    return null;
+  }
+
+  return (
+    <List.Item
+      actions={[
+        <Button type="primary" onClick={() => console.log("Editar curso")}>
+          <EditOutlined />
+        </Button>,
+        <Button type="danger" onClick={() => console.log("Eliminar curso")}>
+          <DeleteOutlined />
+        </Button>
+      ]}
+    >
+        <img 
+            src={courseData.image_480x270} 
+            alt={courseData.title} 
+            style={{ width: "100px", marginRight: "20px" }}
+        />
+        <List.Item.Meta 
+            title={`${courseData.title} | ID: ${course.idCourse}`}
+            description={courseData.headline}
+        />
+    </List.Item>
+  );
 }
