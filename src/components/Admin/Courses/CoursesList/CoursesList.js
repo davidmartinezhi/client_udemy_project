@@ -37,7 +37,7 @@ export default function CoursesList(props) {
 
   return (
     <div className="courses-list">
-      <div className="course-list__header">
+      <div className="courses-list__header">
         <Button type="primary" onClick={() => console.log("Creando curso...")}>
           Nuevo Curso
         </Button>

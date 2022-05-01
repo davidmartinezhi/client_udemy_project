@@ -1,0 +1,11 @@
+@import '../../../../scss/index.scss';
+
+.courses-list{
+    
+    &__header{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+}
