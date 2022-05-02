@@ -4,6 +4,7 @@ import {EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import DragSortableList from "react-drag-sortable";
 import { getAccessTokenApi } from "../../../../api/auth"
 import Modal from "../../../Modal";
+import AddEditCoursesForm from "../AddEditCoursesForm";
 
 import { deleteCourseApi, getCourseDataUdemyApi } from "../../../../api/course";
 import "./CoursesList.scss";
@@ -37,6 +38,12 @@ export default function CoursesList(props) {
     console.log(sortedList);
   };
 
+  const addCourseModal = () => {
+    setIsVisibleModal(true);
+    setModalTitle("Creando nuevo curso");
+    setModalContent(<AddEditCoursesForm setIsVisibleModal={setIsVisibleModal} setReloadCourses={setReloadCourses} />);
+  }
+
   const deleteCourse = (course) => {
     const accessToken = getAccessTokenApi();
 
@@ -64,7 +71,7 @@ export default function CoursesList(props) {
   return (
     <div className="courses-list">
       <div className="courses-list__header">
-        <Button type="primary" onClick={() => console.log("Creando curso...")}>
+        <Button type="primary" onClick={() => addCourseModal}>
           Nuevo Curso
         </Button>
       </div>
@@ -77,6 +84,13 @@ export default function CoursesList(props) {
         )}
         <DragSortableList items={listCourses} onSort={onSort} type="vertical" />
       </div>
+      <Modal  
+        title={modalTitle}
+        isVisibleModal={isVisibleModal}
+        setIsVisibleModal={setIsVisibleModal}
+      >
+        {modalContent}
+      </Modal>
     </div>
   );
 }
