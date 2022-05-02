@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { List, Button, Modal as ModalAntd, notification } from "antd";
 import {EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import DragSortableList from "react-drag-sortable";
+import { getAccessTokenApi } from "../../../../api/auth"
 import Modal from "../../../Modal";
 
-import { getCourseDataUdemyApi } from "../../../../api/course";
+import { deleteCourseApi, getCourseDataUdemyApi } from "../../../../api/course";
 import "./CoursesList.scss";
 
 const { confirm } = ModalAntd;
@@ -23,6 +24,7 @@ export default function CoursesList(props) {
         content: (
           <Course
             course={course}
+            deleteCourse={deleteCourse}
           />
         )
       });
@@ -33,6 +35,30 @@ export default function CoursesList(props) {
 
   const onSort = (sortedList, dropEvent) => {
     console.log(sortedList);
+  };
+
+  const deleteCourse = (course) => {
+    const accessToken = getAccessTokenApi();
+
+    confirm({
+      title: "Eliminando curso",
+      content: `¿Estas segur@ que quieres eliminar el curso ${course.idCourse}?`,
+      okText: "Eliminar",
+      okType: "danger",
+      cancelText: "Cancelar",
+      onOk() {
+        deleteCourseApi(accessToken, course._id)
+          .then((response) => {
+            const typeNotification =
+              response.code == 200 ? "success" : "warning";
+            notification[typeNotification]({ message: response.message });
+            setReloadCourses(true);
+          })
+          .catch(() => {
+            notification["danger"]({ message: "Error del servidor, intentalo más tarde." });
+          });
+      },
+    });
   };
 
   return (
@@ -60,7 +86,7 @@ export default function CoursesList(props) {
 
 //Componente de curso
 function Course(props) {
-  const { course } = props;
+  const { course, deleteCourse } = props;
   const [courseData, setCourseData] = useState(null);
 
     //Actualiza el curso cuando tiene cambios
@@ -86,7 +112,7 @@ function Course(props) {
         <Button type="primary" onClick={() => console.log("Editar curso")}>
           <EditOutlined />
         </Button>,
-        <Button type="danger" onClick={() => console.log("Eliminar curso")}>
+        <Button type="danger" onClick={() => deleteCourse(course)}>
           <DeleteOutlined />
         </Button>
       ]}
