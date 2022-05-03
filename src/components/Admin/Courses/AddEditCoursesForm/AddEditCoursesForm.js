@@ -7,18 +7,17 @@ import {
   LinkOutlined,
 } from "@ant-design/icons";
 import { getAccessTokenApi } from "../../../../api/auth";
-import { addCourseApi } from "../../../../api/course";
+import { addCourseApi, updateCourseApi } from "../../../../api/course";
 
 import "./AddEditCoursesForm.scss";
 
 export default function AddEditCoursesForm(props) {
-
   const { setIsVisibleModal, setReloadCourses, course } = props;
   const [courseData, setCourseData] = useState({});
 
-  useEffect(()=> {
+  useEffect(() => {
     course && setCourseData(course);
-  }, [course])
+  }, [course]);
 
   const addCourse = (e) => {
     if (!courseData.idCourse) {
@@ -28,7 +27,7 @@ export default function AddEditCoursesForm(props) {
 
       addCourseApi(accessToken, courseData)
         .then((response) => {
-          const typeNotification = response.code == 200 ? "success" : "warning";
+          const typeNotification = response.code === 200 ? "success" : "warning";
           notification[typeNotification]({ message: response.message });
           setIsVisibleModal(false);
           setReloadCourses(true);
@@ -43,7 +42,20 @@ export default function AddEditCoursesForm(props) {
   };
 
   const updateCourse = (e) => {
-    console.log("Actualizando curso...");
+    const accessToken = getAccessTokenApi();
+    updateCourseApi(accessToken, course._id, courseData)
+      .then((response) => {
+        const typeNotification = response.code === 200 ? "success" : "warning";
+        notification[typeNotification]({ message: response.message });
+        setIsVisibleModal(false);
+        setReloadCourses(true);
+        setCourseData({});
+      })
+      .catch(() => {
+        notification["error"]({
+          message: "Error en el servidor, intentelo más tarde.",
+        });
+      });
   };
 
   return (
