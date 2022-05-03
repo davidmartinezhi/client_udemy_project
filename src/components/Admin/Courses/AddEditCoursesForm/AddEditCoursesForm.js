@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Button, notification } from "antd";
-import { KeyOutlined } from "@ant-design/icons";
+import {
+  KeyOutlined,
+  DollarCircleOutlined,
+  GiftOutlined,
+} from "@ant-design/icons";
 import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./AddEditCoursesForm.scss";
@@ -32,6 +36,27 @@ function AddEditForm(props) {
           // onChange={}
           disabled={course ? true : false}
         />
+      </Form.Item>
+      <Form.Item>
+        <Input
+          prefix={<GiftOutlined />}
+          placeholder="Cupón de descuento"
+          // value={}
+          // onChange={}
+        />
+      </Form.Item>
+      <Form.Item>
+        <Input
+          prefix={<DollarCircleOutlined />}
+          placeholder="Precio del curso"
+          // value={}
+          // onChange={}
+        />
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit" className="btn-submit">
+          {course ? "Actualizar curso" : "Crear curso"}
+        </Button>
       </Form.Item>
     </Form>
   );
