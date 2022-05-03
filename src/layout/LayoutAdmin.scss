@@ -11,6 +11,8 @@
         display: flex;
         padding: 0;
         height: 65px;
+        color: $primary-color;
+        z-index: 1;
     }
 
     &__content{
