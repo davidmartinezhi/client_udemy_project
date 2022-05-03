@@ -12,8 +12,13 @@ import { addCourseApi } from "../../../../api/course";
 import "./AddEditCoursesForm.scss";
 
 export default function AddEditCoursesForm(props) {
+
   const { setIsVisibleModal, setReloadCourses, course } = props;
   const [courseData, setCourseData] = useState({});
+
+  useEffect(()=> {
+    course && setCourseData(course);
+  }, [course])
 
   const addCourse = (e) => {
     if (!courseData.idCourse) {
