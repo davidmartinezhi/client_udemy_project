@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { List, Button, Modal as ModalAntd, notification } from "antd";
-import {EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import DragSortableList from "react-drag-sortable";
-import { getAccessTokenApi } from "../../../../api/auth"
+import { getAccessTokenApi } from "../../../../api/auth";
 import Modal from "../../../Modal";
 import AddEditCoursesForm from "../AddEditCoursesForm";
 
@@ -20,19 +20,13 @@ export default function CoursesList(props) {
 
   useEffect(() => {
     const listCourseArray = [];
-    courses.forEach(course => {
+    courses.forEach((course) => {
       listCourseArray.push({
-        content: (
-          <Course
-            course={course}
-            deleteCourse={deleteCourse}
-          />
-        )
+        content: <Course course={course} deleteCourse={deleteCourse} />,
       });
     });
     setListCourses(listCourseArray);
   }, [courses]);
-
 
   const onSort = (sortedList, dropEvent) => {
     console.log(sortedList);
@@ -40,9 +34,14 @@ export default function CoursesList(props) {
 
   const addCourseModal = () => {
     setIsVisibleModal(true);
-    setModalTitle("Creando nuevo curso");
-    setModalContent(<AddEditCoursesForm setIsVisibleModal={setIsVisibleModal} setReloadCourses={setReloadCourses} />);
-  }
+    setModalTitle("Creando Nuevo Curso");
+    setModalContent(
+      <AddEditCoursesForm
+        setIsVisibleModal={setIsVisibleModal}
+        setReloadCourses={setReloadCourses}
+      />
+    );
+  };
 
   const deleteCourse = (course) => {
     const accessToken = getAccessTokenApi();
@@ -62,7 +61,9 @@ export default function CoursesList(props) {
             setReloadCourses(true);
           })
           .catch(() => {
-            notification["danger"]({ message: "Error del servidor, intentalo más tarde." });
+            notification["danger"]({
+              message: "Error del servidor, intentalo más tarde.",
+            });
           });
       },
     });
@@ -71,7 +72,7 @@ export default function CoursesList(props) {
   return (
     <div className="courses-list">
       <div className="courses-list__header">
-        <Button type="primary" onClick={() => addCourseModal}>
+        <Button type="primary" onClick={addCourseModal}>
           Nuevo Curso
         </Button>
       </div>
@@ -84,10 +85,10 @@ export default function CoursesList(props) {
         )}
         <DragSortableList items={listCourses} onSort={onSort} type="vertical" />
       </div>
-      <Modal  
+      <Modal
         title={modalTitle}
-        isVisibleModal={isVisibleModal}
-        setIsVisibleModal={setIsVisibleModal}
+        isVisible={isVisibleModal}
+        setIsVisible={setIsVisibleModal}
       >
         {modalContent}
       </Modal>
@@ -95,20 +96,18 @@ export default function CoursesList(props) {
   );
 }
 
-
-
-
 //Componente de curso
 function Course(props) {
   const { course, deleteCourse } = props;
   const [courseData, setCourseData] = useState(null);
 
-    //Actualiza el curso cuando tiene cambios
+  //Actualiza el curso cuando tiene cambios
   useEffect(() => {
-    getCourseDataUdemyApi(course.idCourse).then(response => {
-      if (response.code !== 200) {  //Si no existe el curso, manda un warning
+    getCourseDataUdemyApi(course.idCourse).then((response) => {
+      if (response.code !== 200) {
+        //Si no existe el curso, manda un warning
         notification["warning"]({
-          message: `El curso con el id ${course.idCourse} no se ha encontrado.`
+          message: `El curso con el id ${course.idCourse} no se ha encontrado.`,
         });
       }
       setCourseData(response.data);
@@ -128,18 +127,18 @@ function Course(props) {
         </Button>,
         <Button type="danger" onClick={() => deleteCourse(course)}>
           <DeleteOutlined />
-        </Button>
+        </Button>,
       ]}
     >
-        <img 
-            src={courseData.image_480x270} 
-            alt={courseData.title} 
-            style={{ width: "100px", marginRight: "20px" }}
-        />
-        <List.Item.Meta 
-            title={`${courseData.title} | ID: ${course.idCourse}`}
-            description={courseData.headline}
-        />
+      <img
+        src={courseData.image_480x270}
+        alt={courseData.title}
+        style={{ width: "100px", marginRight: "20px" }}
+      />
+      <List.Item.Meta
+        title={`${courseData.title} | ID: ${course.idCourse}`}
+        description={courseData.headline}
+      />
     </List.Item>
   );
 }
