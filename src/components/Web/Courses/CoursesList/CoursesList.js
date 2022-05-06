@@ -21,9 +21,8 @@ export default function CoursesList(props) {
 
 function Course(props) {
   const { course } = props;
-  const {Meta} = Card;
+  const { Meta } = Card;
   const [courseInfo, setCourseInfo] = useState({});
-  
 
   useEffect(() => {
     //Recibimos data por parte de udemy
