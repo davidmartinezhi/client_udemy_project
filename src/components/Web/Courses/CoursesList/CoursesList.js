@@ -10,7 +10,7 @@ export default function CoursesList(props) {
     <div className="courses-list">
       <Row>
         {courses.map((course) => (
-          <Col md={8} className="courses-list__courset">
+          <Col md={8} className="courses-list__course">
             <Course key={course._id} course={course} />
           </Col>
         ))}
@@ -55,7 +55,7 @@ function Course(props) {
         <div className="courses-list__course-footer">
           <span>{course.price ? `MX$${course.price}` : courseInfo.price} </span>
           <div>
-            <Rate desabled defaultValue={5} />
+            <Rate disabled defaultValue={5} />
           </div>
         </div>
       </Card>
