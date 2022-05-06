@@ -52,6 +52,7 @@ function Course(props) {
         cover={<img src={courseInfo.image_480x270} alt={courseInfo.title} />}
       >
         <Meta title={courseInfo.title} description={courseInfo.headline} />
+        <Button>Entrar en el Curso</Button>
         <div className="courses-list__course-footer">
           <span>{course.price ? `MX$${course.price}` : courseInfo.price} </span>
           <div>
