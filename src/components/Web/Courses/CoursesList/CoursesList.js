@@ -54,6 +54,9 @@ function Course(props) {
         <Meta title={courseInfo.title} description={courseInfo.headline} />
         <div className="courses-list__course-footer">
           <span>{course.price ? `MX$${course.price}` : courseInfo.price} </span>
+          <div>
+            <Rate desabled defaultValue={5} />
+          </div>
         </div>
       </Card>
     </a>
