@@ -21,8 +21,10 @@ export default function CoursesList(props) {
 
 function Course(props) {
   const { course } = props;
-  const { Meta } = Card;
   const [courseInfo, setCourseInfo] = useState({});
+  const [urlCourse, setUrlCourse] = useState("");
+  const { Meta } = Card;
+  
 
   useEffect(() => {
     //Recibimos data por parte de udemy
@@ -35,6 +37,7 @@ function Course(props) {
         } else {
           //Si es correcta, establece los datos de la tarjeta
           setCourseInfo(response.data);
+          mountUrl(response.data.url)
         }
       })
       .catch(() => {
@@ -45,8 +48,20 @@ function Course(props) {
       });
   }, [course]);
 
+
+  const mountUrl = (url) => {
+    if(!course.link){ //Link de udemy
+      const baseUrl = `https://www.udemy.com${url}`;
+      const finalUrl = baseUrl + (course.coupon ? `?couponCode=${course.coupon}` : "");
+      setUrlCourse(finalUrl);
+    }
+    else{ //Link personalizado
+      setUrlCourse(course.link);
+    }
+  }
+
   return (
-    <a href="#" target="_blank" rel="noopener noreferrer">
+    <a href={urlCourse} target="_blank" rel="noopener noreferrer">
       <Card
         cover={<img src={courseInfo.image_480x270} alt={courseInfo.title} />}
       >
