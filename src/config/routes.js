@@ -8,6 +8,7 @@ import AdminSignIn from '../pages/Admin/SignIn';
 import AdminUsers from '../pages/Admin/Users';
 import AdminMenuWeb from '../pages/Admin/MenuWeb';
 import AdminCourses from '../pages/Admin/Courses';
+import AdminBlog from '../pages/Admin/Blog';
 
 //Pages
 import Home from '../pages/Home';
@@ -51,6 +52,11 @@ const routes = [
             {
                 path: "/admin/courses",
                 component: AdminCourses,
+                exact: true
+            },
+            {
+                path: "/admin/blog",
+                component: AdminBlog,
                 exact: true
             },
             //Siempre se pone el error 404 al final de las rutas
