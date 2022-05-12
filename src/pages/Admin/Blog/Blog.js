@@ -4,6 +4,7 @@ import Modal from "../../../components/Modal";
 import queryString from 'query-string';
 import {withRouter} from 'react-router-dom';
 import { getPostsApi } from "../../../api/post";
+import PostsList from "../../../components/Admin/Blog/PostsList";
 
 import "./Blog.scss";
 
@@ -20,7 +21,7 @@ function Blog(props) {
   const [reloadPosts, setReloadPosts] = useState(false); //forzar recargado de posts
 
   const { page = 1 } = queryString.parse(location.search); //Valor default del query en el string
-  console.log(posts);
+
   //Cada vez que actualizemos la pagina, agarra sus valores correspondientes
   useEffect(() => {
     getPostsApi(12, page)
