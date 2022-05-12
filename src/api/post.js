@@ -1,6 +1,6 @@
 import { basePath, apiVersion } from "./config";
 
-export function getPostApi(limit, page) {
+export function getPostsApi(limit, page) {
   const url = `${basePath}/${apiVersion}/get-posts?limit=${limit}&page=${page}`;
 
   return fetch(url)

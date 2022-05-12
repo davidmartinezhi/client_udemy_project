@@ -3,19 +3,41 @@ import { notification, Button } from "antd";
 import Modal from "../../../components/Modal";
 import queryString from 'query-string';
 import {withRouter} from 'react-router-dom';
+import { getPostsApi } from "../../../api/post";
 
 import "./Blog.scss";
 
 function Blog(props) {
+  const { location, history } = props;
 
-  const {location, history} = props;
+  //modal states
+  const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [modalTitle, setmMdalTitle] = useState("");
+  const [modalContent, setModalContent] = useState(null);
 
-  const [isVisibleModal, setisVisibleModal] = useState(false);
-  const [modalTitle, setmodalTitle] = useState("");
-  const [modalContent, setmodalContent] = useState(null);
+  //posts states
+  const [posts, setPosts] = useState(null);
+  const [reloadPosts, setReloadPosts] = useState(false); //forzar recargado de posts
 
-  const {page = 1} = queryString.parse(location.search); //Valor default del query en el string
-  
+  const { page = 1 } = queryString.parse(location.search); //Valor default del query en el string
+  console.log(posts);
+  //Cada vez que actualizemos la pagina, agarra sus valores correspondientes
+  useEffect(() => {
+    getPostsApi(12, page)
+      .then((response) => {
+        if(response?.code !== 200){
+          notification["warning"]({message: response.message});
+        }else{
+          setPosts(response.posts)
+        }
+      })
+      .catch((err) => {
+        notification["error"]({ message: "Error del servidor" });
+      });
+
+      setReloadPosts(false);
+  }, [page, reloadPosts]);
+
 
   return (
     <div className="blog">
@@ -28,7 +50,7 @@ function Blog(props) {
       <Modal
         title={modalTitle}
         isVisible={isVisibleModal}
-        setIsVisible={setisVisibleModal}
+        setIsVisible={setIsVisibleModal}
         width="75%"
       />
     </div>
