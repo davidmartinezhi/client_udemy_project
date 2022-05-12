@@ -39,6 +39,10 @@ function Blog(props) {
       setReloadPosts(false);
   }, [page, reloadPosts]);
 
+  if(!posts){
+    return null;
+  }
+
 
   return (
     <div className="blog">
@@ -46,6 +50,7 @@ function Blog(props) {
         <Button type="primary">Nuevo Post</Button>
       </div>
       <h1>PostList...</h1>
+      <PostsList posts={posts} />
       <h2>Paginación...</h2>
 
       <Modal
