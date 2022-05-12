@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { notification, Button } from "antd";
 import Modal from "../../../components/Modal";
+import queryString from 'query-string';
+import {withRouter} from 'react-router-dom';
 
 import "./Blog.scss";
 
-export default function Blog() {
+function Blog(props) {
+
+  const {location, history} = props;
+
   const [isVisibleModal, setisVisibleModal] = useState(false);
   const [modalTitle, setmodalTitle] = useState("");
   const [modalContent, setmodalContent] = useState(null);
+
+  const {page = 1} = queryString.parse(location.search); //Valor default del query en el string
+  
 
   return (
     <div className="blog">
@@ -26,3 +34,5 @@ export default function Blog() {
     </div>
   );
 }
+
+export default withRouter(Blog);
