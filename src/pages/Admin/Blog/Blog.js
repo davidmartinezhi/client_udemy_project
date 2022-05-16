@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import {withRouter} from 'react-router-dom';
 import { getPostsApi } from "../../../api/post";
 import PostsList from "../../../components/Admin/Blog/PostsList";
+import Pagination from "../../../components/Pagination";
 
 import "./Blog.scss";
 
@@ -51,7 +52,7 @@ function Blog(props) {
       </div>
       <h1>PostList...</h1>
       <PostsList posts={posts} />
-      <h2>Paginación...</h2>
+      <Pagination />
 
       <Modal
         title={modalTitle}
