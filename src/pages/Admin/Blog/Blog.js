@@ -52,7 +52,7 @@ function Blog(props) {
       </div>
       <h1>PostList...</h1>
       <PostsList posts={posts} />
-      <Pagination />
+      <Pagination posts={posts} location={location} history={history} />
 
       <Modal
         title={modalTitle}
