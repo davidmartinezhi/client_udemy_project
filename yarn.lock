@@ -13369,6 +13369,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-is@npm:^18.1.0":
+  version: 18.1.0
+  resolution: "react-is@npm:18.1.0"
+  checksum: 456a0c4ab16cbb0ca6b977c8f8c23d8aa27af50c4a5a04cde6ae82edc4847c89f5373fe9229fb8fed232e2df04caae22b1e49ef60a0e43c9f73fa749c3818acd
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.8.3":
   version: 0.8.3
   resolution: "react-refresh@npm:0.8.3"
@@ -15836,6 +15843,7 @@ resolve@1.18.1:
     react-dom: ^17.0.2
     react-drag-sortable: ^1.0.6
     react-dropzone: ^11.5.3
+    react-is: ^18.1.0
     react-router-dom: 5.0.0
     react-scripts: 4.0.3
     sass: ^1.50.0
