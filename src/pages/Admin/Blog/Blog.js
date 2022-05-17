@@ -6,6 +6,7 @@ import {withRouter} from 'react-router-dom';
 import { getPostsApi } from "../../../api/post";
 import PostsList from "../../../components/Admin/Blog/PostsList";
 import Pagination from "../../../components/Pagination";
+import AddEditPostForm from "../../../components/Admin/Blog/AddEditPostForm";
 
 import "./Blog.scss";
 
@@ -14,7 +15,7 @@ function Blog(props) {
 
   //modal states
   const [isVisibleModal, setIsVisibleModal] = useState(false);
-  const [modalTitle, setmMdalTitle] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
 
   //posts states
@@ -40,6 +41,19 @@ function Blog(props) {
       setReloadPosts(false);
   }, [page, reloadPosts]);
 
+
+  const addPost = () => {
+    setIsVisibleModal(true);
+    setModalTitle("Creando Nuevo Post");
+    setModalContent(
+      <AddEditPostForm
+        setIsVisibleModal={setIsVisibleModal}
+        setReloadPosts={setReloadPosts}
+        post={null}
+      />
+    );
+  };
+
   if(!posts){
     return null;
   }
@@ -48,7 +62,7 @@ function Blog(props) {
   return (
     <div className="blog">
       <div className="blog__add-post">
-        <Button type="primary">Nuevo Post</Button>
+        <Button onClick={addPost} type="primary">Nuevo Post</Button>
       </div>
       <h1>PostList...</h1>
       <PostsList posts={posts} setReloadPosts={setReloadPosts} />
@@ -59,7 +73,9 @@ function Blog(props) {
         isVisible={isVisibleModal}
         setIsVisible={setIsVisibleModal}
         width="75%"
-      />
+      >
+        {modalContent}
+      </Modal>
     </div>
   );
 }

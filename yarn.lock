@@ -2522,6 +2522,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinymce/tinymce-react@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@tinymce/tinymce-react@npm:4.1.0"
+  dependencies:
+    prop-types: ^15.6.2
+    tinymce: ^6.0.0 || ^5.5.1
+  peerDependencies:
+    react: ^18.0.0 || ^17.0.1 || ^16.7.0
+    react-dom: ^18.0.0 || ^17.0.1 || ^16.7.0
+  checksum: 22915012d7e301bd16f3e031395e96fb51f7ea41f444d676d431f2f474bd8ae4aa7a5534d29082289d1657cc642e12daeaceb77f21f5c0c71a0ea2fb7e95b122
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -15543,6 +15556,13 @@ resolve@1.18.1:
   languageName: node
   linkType: hard
 
+"tinymce@npm:^6.0.0 || ^5.5.1":
+  version: 6.0.2
+  resolution: "tinymce@npm:6.0.2"
+  checksum: 54ab5af009919b61db2dbd24e2539997566d7b3eb464d188d0537358a5cf2588cedb8996251e966ec88bcf4aa13ee890394536ab2511a590a04859e60fd209b7
+  languageName: node
+  linkType: hard
+
 "tmpl@npm:1.0.x":
   version: 1.0.4
   resolution: "tmpl@npm:1.0.4"
@@ -15833,6 +15853,7 @@ resolve@1.18.1:
     "@testing-library/jest-dom": ^5.11.4
     "@testing-library/react": ^11.1.0
     "@testing-library/user-event": ^12.1.10
+    "@tinymce/tinymce-react": ^4.1.0
     antd: ^4.16.13
     eslint-config-react-app: ^6.0.0
     jwt-decode: 2.2.0
