@@ -65,8 +65,11 @@ function AddEditForm(props) {
             format="DD/MM/YYYY HH:mm:ss"
             placeholder="Fecha de publicación"
             showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
-            //value={}
-            //onChange={}
+            value={postData.date && moment(postData.date)}
+            onChange={ (e, value) => setPostData(
+                {...postData, 
+                    date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString()
+                })}
           />
         </Col>
       </Row>
