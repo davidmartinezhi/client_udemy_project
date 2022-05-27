@@ -50,7 +50,6 @@ function AddEditForm(props) {
         </Col>
         <Col span={8}>
           <DatePicker
-            d
             format="DD/MM/YYYY HH:mm:ss"
             placeholder="Fecha de publicación"
             showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
@@ -95,6 +94,9 @@ function AddEditForm(props) {
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
         }}
       />
+      <Button type="primary" htmlType="submit" className="btn-submit">
+        { post ? "Actualizar Post": "Crear Post"}      
+    </Button> 
     </Form>
   );
 }
