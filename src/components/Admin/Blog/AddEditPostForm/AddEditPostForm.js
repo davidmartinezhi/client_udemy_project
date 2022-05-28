@@ -76,7 +76,7 @@ function AddEditForm(props) {
 
       <Editor
         apiKey="your-api-key"
-        value=""
+        value={postData.description ? postData.description : ""}
         init={{
           height: 400,
           menubar: true,
@@ -108,6 +108,7 @@ function AddEditForm(props) {
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
         }}
+        onChange={e => setPostData({ ...postData, description: e.target.getContent() })}
       />
       <Button type="primary" htmlType="submit" className="btn-submit">
         { post ? "Actualizar Post": "Crear Post"}      
