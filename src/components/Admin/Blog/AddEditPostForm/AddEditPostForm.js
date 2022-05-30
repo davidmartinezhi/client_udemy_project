@@ -21,7 +21,6 @@ export default function AddEditPostForm(props) {
   }, [post]);
 
   const processPost = e => {
-    e.preventDefault();
     const { title, url, description, date } = postData;
 
     if (!title || !url || !description || !date) {
