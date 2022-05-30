@@ -3,7 +3,7 @@ import { Row, Col, Form, Input, Button, DatePicker, notification } from "antd";
 import { FontSizeOutlined, LinkOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { Editor } from "@tinymce/tinymce-react";
-import { addPostApi } from '../../../../api/post';
+import { addPostApi, updatePostApi } from '../../../../api/post';
 import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./AddEditPostForm.scss";
@@ -18,38 +18,63 @@ export default function AddEditPostForm(props) {
     } else {
       setPostData({});
     }
-  }, []);
+  }, [post]);
 
-  const processPost = (e) => {
+  const processPost = e => {
+    e.preventDefault();
     const { title, url, description, date } = postData;
 
     if (!title || !url || !description || !date) {
-      notification["error"]({ message: "Todos los campos son obligatorios." });
+      notification["error"]({
+        message: "Todos los campos son obligatorios."
+      });
     } else {
       if (!post) {
         addPost();
       } else {
-        console.log("editando post...");
-        console.log(postData);
+        updatePost();
       }
     }
   };
 
   const addPost = () => {
     const token = getAccessTokenApi();
+
     addPostApi(token, postData)
-        .then(response => {
-            const typeNotification = response.code == 200 ? "success" : "warning";
-            notification[typeNotification]({message: response.message});
-            setIsVisibleModal(false); //cerramos modal
-            setReloadPosts(true); //refrescamos los posts para que se actualicen
-            setPostData({}); //reseteamos el valor de postData
-        })
-        .catch( () => {
-            notification["error"]({message: "Error del servidor."})
+      .then(response => {
+        const typeNotification = response.code === 200 ? "success" : "warning";
+        notification[typeNotification]({
+          message: response.message
         });
-        
-  }
+        setIsVisibleModal(false);
+        setReloadPosts(true);
+        setPostData({});
+      })
+      .catch(() => {
+        notification["error"]({
+          message: "Error del servidor."
+        });
+      });
+  };
+
+  const updatePost = () => {
+    const token = getAccessTokenApi();
+    updatePostApi(token, post._id, postData)
+      .then(response => {
+        const typeNotification = response.code === 200 ? "success" : "warning";
+        notification[typeNotification]({
+          message: response.message
+        });
+        setIsVisibleModal(false);
+        setReloadPosts(true);
+        setPostData({});
+      })
+      .catch(() => {
+        notification["error"]({
+          message: "Error del servidor."
+        });
+      });
+  };
 
   return (
     <div className="add-edit-post-form">
@@ -93,15 +118,15 @@ function AddEditForm(props) {
           />
         </Col>
         <Col span={8}>
-          <DatePicker
+        <DatePicker
+            style={{ width: "100%" }}
             format="DD/MM/YYYY HH:mm:ss"
             placeholder="Fecha de publicación"
-            showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
             value={postData.date && moment(postData.date)}
             onChange={(e, value) =>
               setPostData({
                 ...postData,
-                date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString(),
+                date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString()
               })
             }
           />
@@ -109,20 +134,22 @@ function AddEditForm(props) {
       </Row>
 
       <Editor
-        value={postData.description ? postData.description : ""}
+        //value={postData.description ? postData.description : ""}
+        initialValue={postData.description ? postData.description : ""}
         init={{
-          height: 400,
-          menubar: true,
-          plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table paste code help wordcount"
-          ],
-          toolbar:
-            "undo redo | formatselect | bold italic backcolor | \
-             alignleft aligncenter alignright alignjustify | \
-             bullist numlist outdent indent | removeformat | help"
-        }}
+            height: 500,
+            menubar: true,
+            plugins: [
+              'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+              'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+              'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | blocks | ' +
+              'bold italic forecolor | alignleft aligncenter ' +
+              'alignright alignjustify | bullist numlist outdent indent | ' +
+              'removeformat | help',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+          }}
         onBlur={e =>
           setPostData({ ...postData, description: e.target.getContent() })
         }
