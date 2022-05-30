@@ -20,20 +20,45 @@ export default function AddEditPostForm(props) {
     }
   }, []);
 
-  const processPost = e => {
-      if(!post){
-          console.log("creando post...");
-          console.log(postData);
-      }else{
-          console.log("editando post...");
-          console.log(postData);
+  const processPost = (e) => {
+    const { title, url, description, date } = postData;
 
+    if (!title || !url || !description || !date) {
+      notification["error"]({ message: "Todos los campos son obligatorios." });
+    } else {
+      if (!post) {
+        addPost();
+      } else {
+        console.log("editando post...");
+        console.log(postData);
       }
+    }
+  };
+
+  const addPost = () => {
+    const token = getAccessTokenApi();
+    addPostApi(token, postData)
+        .then(response => {
+            const typeNotification = response.code == 200 ? "success" : "warning";
+            notification[typeNotification]({message: response.message});
+            setIsVisibleModal(false); //cerramos modal
+            setReloadPosts(true); //refrescamos los posts para que se actualicen
+            setPostData({}); //reseteamos el valor de postData
+        })
+        .catch( () => {
+            notification["error"]({message: "Error del servidor."})
+        });
+        
   }
 
   return (
     <div className="add-edit-post-form">
-      <AddEditForm postData={postData} setPostData={setPostData} post={post} processPost={processPost} />
+      <AddEditForm
+        postData={postData}
+        setPostData={setPostData}
+        post={post}
+        processPost={processPost}
+      />
     </div>
   );
 }
@@ -49,7 +74,9 @@ function AddEditForm(props) {
             prefix={<FontSizeOutlined />}
             placeholder="Titulo"
             value={postData.title}
-            onChange={e => setPostData({...postData, title: e.target.value})}
+            onChange={(e) =>
+              setPostData({ ...postData, title: e.target.value })
+            }
           />
         </Col>
         <Col span={8}>
@@ -57,7 +84,12 @@ function AddEditForm(props) {
             prefix={<LinkOutlined />}
             placeholder="URL"
             value={postData.url}
-            onChange={e => setPostData({...postData, url: transformTextToUrl(e.target.value)})}
+            onChange={(e) =>
+              setPostData({
+                ...postData,
+                url: transformTextToUrl(e.target.value),
+              })
+            }
           />
         </Col>
         <Col span={8}>
@@ -66,58 +98,43 @@ function AddEditForm(props) {
             placeholder="Fecha de publicación"
             showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
             value={postData.date && moment(postData.date)}
-            onChange={ (e, value) => setPostData(
-                {...postData, 
-                    date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString()
-                })}
+            onChange={(e, value) =>
+              setPostData({
+                ...postData,
+                date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString(),
+              })
+            }
           />
         </Col>
       </Row>
 
       <Editor
-        apiKey="your-api-key"
         value={postData.description ? postData.description : ""}
         init={{
           height: 400,
           menubar: true,
           plugins: [
-            "advlist",
-            "autolink",
-            "lists",
-            "link",
-            "image",
-            "charmap",
-            "preview",
-            "anchor",
-            "searchreplace",
-            "visualblocks",
-            "code",
-            "fullscreen",
-            "insertdatetime",
-            "media",
-            "table",
-            "code",
-            "help",
-            "wordcount",
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table paste code help wordcount"
           ],
           toolbar:
-            "undo redo | blocks | " +
-            "bold italic forecolor | alignleft aligncenter " +
-            "alignright alignjustify | bullist numlist outdent indent | " +
-            "removeformat | help",
-          content_style:
-            "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+            "undo redo | formatselect | bold italic backcolor | \
+             alignleft aligncenter alignright alignjustify | \
+             bullist numlist outdent indent | removeformat | help"
         }}
-        onChange={e => setPostData({ ...postData, description: e.target.getContent() })}
+        onBlur={e =>
+          setPostData({ ...postData, description: e.target.getContent() })
+        }
       />
       <Button type="primary" htmlType="submit" className="btn-submit">
-        { post ? "Actualizar Post": "Crear Post"}      
-    </Button> 
+        {post ? "Actualizar Post" : "Crear Post"}
+      </Button>
     </Form>
   );
 }
 
-function transformTextToUrl(text){
-    const url = text.replace(" ", "-");
-    return url.toLowerCase();
+function transformTextToUrl(text) {
+  const url = text.replace(" ", "-");
+  return url.toLowerCase();
 }
