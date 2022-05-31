@@ -20,7 +20,7 @@
     "react-drag-sortable": "^1.0.6",
     "react-dropzone": "^11.5.3",
     "react-is": "^18.1.0",
-    "react-router-dom": "5.0.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "4.0.3",
     "sass": "^1.50.0",
     "styled-components": "^5.3.5",
