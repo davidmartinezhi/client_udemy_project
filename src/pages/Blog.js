@@ -2,6 +2,8 @@ import React from "react";
 import { Row, Col } from "antd";
 import { withRouter } from "react-router-dom";
 
+import PostListWeb from "../components/Web/Blog/PostListWeb";
+
  function Blog(props) {
     const {location} = props;
     const pathname = location.pathname;
@@ -15,7 +17,7 @@ import { withRouter } from "react-router-dom";
             {pathname !== "/blog" ? (
                " PostInfo"
             ): (
-               " ListPosts"
+               <PostListWeb />
             )}
         </Col>
         <Col md={4}/>
