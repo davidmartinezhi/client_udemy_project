@@ -9,9 +9,17 @@ import { withRouter } from "react-router-dom";
     console.log(pathname);
 
   return (
-    <div>
-      {pathname !== "/blog" ? <h1>Dentro de un post...</h1> : <h1>Lista de posts</h1>}
-    </div>
+    <Row>
+        <Col md={4}/>
+        <Col md={16}>
+            {pathname !== "/blog" ? (
+               " PostInfo"
+            ): (
+               " ListPosts"
+            )}
+        </Col>
+        <Col md={4}/>
+    </Row>
   );
 }
 
