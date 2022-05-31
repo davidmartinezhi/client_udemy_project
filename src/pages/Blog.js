@@ -5,10 +5,10 @@ import { withRouter } from "react-router-dom";
 import PostListWeb from "../components/Web/Blog/PostListWeb";
 
  function Blog(props) {
-    const {location} = props;
+    const {location, history} = props;
     const pathname = location.pathname;
 
-    console.log(pathname);
+    // console.log(pathname);
 
   return (
     <Row>
@@ -17,7 +17,7 @@ import PostListWeb from "../components/Web/Blog/PostListWeb";
             {pathname !== "/blog" ? (
                " PostInfo"
             ): (
-               <PostListWeb />
+               <PostListWeb location={location} history={history}/>
             )}
         </Col>
         <Col md={4}/>
