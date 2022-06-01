@@ -29,10 +29,28 @@ export default function PostListWeb(props) {
       })
   }, [page]);
 
+  if(!posts){
+    return (
+      <Spin tip="cargando" style={{width: "100%", padding: "200px 0"}} />
+    );
+  }
 
   return (
-    <div>
-      <h1>PostListWeb...</h1>
-    </div>
+    <div className="posts-list-web">
+    <h1>Blog</h1>
+    <List
+      dataSource={posts.docs}
+      renderItem={post => <Post post={post} />}
+    />
+    <Pagination posts={posts} location={location} history={history} />
+  </div>
   );
+}
+
+function Post(props){
+
+  return (
+    <h1>Post</h1>
+  );
+
 }
