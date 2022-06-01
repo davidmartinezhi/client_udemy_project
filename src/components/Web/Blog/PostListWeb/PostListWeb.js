@@ -48,7 +48,7 @@ export default function PostListWeb(props) {
 
 function Post(props) {
   const { post } = props;
-  console.log(post);
+  // console.log(post);
   const day = moment(post.date).format("DD");
   const month = moment(post.date).format("MMMM");
 
