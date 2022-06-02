@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Spin, List, notification } from "antd";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -35,6 +36,10 @@ export default function PostListWeb(props) {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Blog | David Gerardo Martínez</title>
+    </Helmet>
     <div className="posts-list-web">
       <h1>Blog</h1>
       <List
@@ -43,6 +48,7 @@ export default function PostListWeb(props) {
       />
       <Pagination posts={posts} location={location} history={history} />
     </div>
+    </>
   );
 }
 

@@ -4,6 +4,8 @@ import { getCoursesApi } from "../api/course";
 import CoursesList from '../components/Web/Courses/CoursesList';
 import PresentationCourses from '../components/Web/Courses/PresentationCourses/PresentationCourses';
 
+import {Helmet} from 'react-helmet';
+
 export default function Courses() {
   const [courses, setCourses] = useState(null);
   // console.log(courses);
@@ -25,6 +27,9 @@ export default function Courses() {
 
   return (
     <>
+    <Helmet>
+      <title>Cursos | David Gerardo Martínez</title>
+    </Helmet>
       <Row>
         <Col md={4}></Col>
         <Col md={16}>
