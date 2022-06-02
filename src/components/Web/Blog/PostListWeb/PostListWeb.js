@@ -38,7 +38,12 @@ export default function PostListWeb(props) {
   return (
     <>
     <Helmet>
-      <title>Blog | David Gerardo Martínez</title>
+      <title>Blogs | David Gerardo Martínez</title>
+      <meta
+          name="description"
+          content="Blogs | David Gerardo Martínez"
+          data-react-helmet="true"
+        />
     </Helmet>
     <div className="posts-list-web">
       <h1>Blog</h1>
