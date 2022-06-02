@@ -29,6 +29,11 @@ export default function Courses() {
     <>
     <Helmet>
       <title>Cursos | David Gerardo Martínez</title>
+      <meta
+          name="description"
+          content="Cursos | David Gerardo Martínez"
+          data-react-helmet="true"
+        />
     </Helmet>
       <Row>
         <Col md={4}></Col>
