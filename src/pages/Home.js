@@ -5,16 +5,21 @@ import HomeCourses from "../components/Web/HomeCourses";
 import HowMyCoursesWork from "../components/Web/HowMyCoursesWork";
 import ReviewsCourses from "../components/Web/ReviewsCourses";
 
-export default function Home(){
-    return(
-        <>
-        <Helmet>
-            <title>Home | David Gerardo Martínez</title>
-        </Helmet>
-            <MainBanner />
-            <HomeCourses />
-            <HowMyCoursesWork />
-            <ReviewsCourses />
-        </>
-    );
+export default function Home() {
+  return (
+    <>
+      <Helmet>
+        <title>Home | David Gerardo Martínez</title>
+        <meta
+          name="description"
+          content="Home | David Gerardo Martínez"
+          data-react-helmet="true"
+        />
+      </Helmet>
+      <MainBanner />
+      <HomeCourses />
+      <HowMyCoursesWork />
+      <ReviewsCourses />
+    </>
+  );
 }
